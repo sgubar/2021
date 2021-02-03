@@ -22,6 +22,11 @@ int just(char* ty)
 		{
 			arr_out[i] = ty[i] - 48;
 		}
+		else 
+		{
+			printf("Error. Try again).\n");
+			return -1;
+		}
 	}
 
 	switch (n)

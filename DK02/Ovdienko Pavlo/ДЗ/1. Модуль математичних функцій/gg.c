@@ -10,9 +10,13 @@ int main(void)
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	printf("Введите шестнадцетиричное число : \n");
-	fgets(arr, 5, stdin);
-	printf("Выводим десятичное число %d \n ", just(arr));
+	do
+	{
+		printf("Введите шестнадцетиричное число : \n");
+		fgets(arr, 5, stdin);
+	}
+	while (just(arr)==-1);
+	    printf("Выводим десятичное число %d \n ", just(arr));
     return 0;
 }
 
