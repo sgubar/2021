@@ -51,12 +51,24 @@ int main(int argc, const char * argv[]) {
 	}
 
 	int sizeOfArray = sizeof(array); // sizeof int *array
+	int x2[5][6];
+
+	int **y2 = create_matrix(5, 6);
+
+	int sum = matrix_sum(y2, 5, 6);
+
+	if (sum == -1)
+	{
+		printf ("Fail\n");
+	}
+
+	delete_matrix(y2, 5);
+	y2 = NULL;
 
 	a = 6;
 
 	// insert code here...
 	printf("Hello, World!\n");
-	printf("%d\n", sum(5, 6));
 
 	return 0;
 }
