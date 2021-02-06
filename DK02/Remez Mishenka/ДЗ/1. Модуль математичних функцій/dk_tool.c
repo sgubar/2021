@@ -1,38 +1,44 @@
 #include "dk_tool.h"
 
-#define MAX_NUMBER 4        // В основному файлі описано, навіщо :)
 #define OCT 8          // Константа чисто для наперед заготовлених формул        
 
 int Convert_Oct_to_Dec(char* arr)        // Наша функція яка отримує масив arr (скорочення від array)
 {
-    int dec, num = 0;
-    for (int i = 0; i < 5; i++)     // Той самий алгоритм який дозволяє не писати зайві нулі (див. 59 строку)
+    int dec = 0, counter_stepen = 0;
+    for (int i = strlen_buffer(arr) - 1; i >= 0; i--)     // Той самий алгоритм який дозволяє не писати зайві нулі (див. 59 строку)
     {
-        if (arr[i] == 10)
-        {
-            num = i;
-        }
-        if ((arr[i] > 47) && (arr[i] < 58))
+        if ((arr[i] > 47) && (arr[i] < 56))
         {
             arr[i] -= 48;
         }
-    }
-    switch (num)            // Цей шмат коду величезний костиль, хоча спочатку все працювало по одній формулі але тоді б треба було 2-х та 3-х значні числа вводити через 0 (Наприклад: 0254(в десятковій доречі це 172, формулу у хабрі знайшов), а так спокійно можна вводити просто 254 завдяки алгоритму на 12 строчці)
-    {
-        case 1:
-            dec = arr[0] * 1;
-            break;
-        case 2:
-            dec = (arr[0] * OCT) + arr[1] * 1;
-            break;
-        case 3:
-            dec = (arr[0] * OCT * OCT) + (arr[1] * OCT) + arr[2] * 1;
-            break;
-        case 0:
-            dec = (arr[0] * OCT * OCT * OCT) + (arr[1] * OCT * OCT) + (arr[2] * OCT) + arr[3] * 1;      // Основна формула інші просто обрізані копії
-            break;
-    default:
-        break;
+        else
+        {
+            printf("Введите коректные данные");
+            return -1;
+        }
+        dec += arr[i] * stepen(OCT, counter_stepen);
+        counter_stepen++;
     }
     return dec;     // Оскільки функція типу int - наша функция повертає число у десятковій формі
+}
+
+int strlen_buffer(char* buffer)
+{
+    int res = 0;
+    while ((*buffer != '\n') && (*buffer != '\0'))
+    {
+        buffer++;
+        res++;
+    }
+    return res;
+}
+
+int stepen(int x, int a)
+{
+    int result = 1;
+    for (int i = 0; i < a; i++)
+    {
+        result *= x;
+    }
+    return result;
 }
