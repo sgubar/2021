@@ -1,75 +1,44 @@
 #include "dk_tool.h"
 
-#define MAX_NUMBER 4        // В основному файлі описано, навіщо :)
-#define OCT 8           // Константа чисто для наперед заготовлених формул
+#define OCT 8          // Константа чисто для наперед заготовлених формул        
 
-int i, dec, num;        // Змінні які спочатку були в головному файлі(бо робив як функцію і вже після ретельної відладки переніс в "Бібліотеку")
-
-int limonchik(char* arr)        // Наша функція яка отримує масив arr (скорочення від array)
+int Convert_Oct_to_Dec(char* arr)        // Наша функція яка отримує масив arr (скорочення від array)
 {
-    for (i = 0; i < 5; i++)     // Той самий алгоритм який дозволяє не писати зайві нулі (див. 59 строку)
+    int dec = 0, counter_stepen = 0;
+    for (int i = strlen_buffer(arr) - 1; i >= 0; i--)     // Той самий алгоритм який дозволяє не писати зайві нулі (див. 59 строку)
     {
-        if (arr[i] == 10) {
-            num = i;
-            
-        }
-    }
-    for (i = 0; i < MAX_NUMBER; i++)
-    {
-        switch (arr[i])
+        if ((arr[i] > 47) && (arr[i] < 56))
         {
-        case 0:
-            arr[i] = 0;
-            break;
-        case 10:
-            arr[i] = 0;
-            break;
-        case '0':
-            arr[i] = 0;
-            break;
-        case '1':
-            arr[i] = 1;
-            break;
-        case '2':
-            arr[i] = 2;
-            break;
-        case '3':
-            arr[i] = 3;
-            break;
-        case '4':
-            arr[i] = 4;
-            break;
-        case '5':
-            arr[i] = 5;
-            break;
-        case '6':
-            arr[i] = 6;
-            break;
-        case '7':
-            arr[i] = 7;
-            break;
-        default:
-            printf("Введите значение в восьмиричной системе исчесления!\n");
-            return -1;      // Ви казали що повернення від'ємного значення означає помилку ось я і вирішив повернути -1
-            break;
+            arr[i] -= 48;
         }
-    }
-    switch (num)            // Цей шмат коду величезний костиль, хоча спочатку все працювало по одній формулі але тоді б треба було 2-х та 3-х значні числа вводити через 0 (Наприклад: 0254(в десятковій доречі це 172, формулу у хабрі знайшов), а так спокійно можна вводити просто 254 завдяки алгоритму на 12 строчці)
-    {
-        case 1:
-            dec = arr[0] * 1;
-            break;
-        case 2:
-            dec = (arr[0] * OCT) + arr[1] * 1;
-            break;
-        case 3:
-            dec = (arr[0] * OCT * OCT) + (arr[1] * OCT) + arr[2] * 1;
-            break;
-        case 0:
-            dec = (arr[0] * OCT * OCT * OCT) + (arr[1] * OCT * OCT) + (arr[2] * OCT) + arr[3] * 1;      // Основна формула інші просто обрізані копії
-            break;
-    default:
-        break;
+        else
+        {
+            printf("Введите коректные данные");
+            return -1;
+        }
+        dec += arr[i] * stepen(OCT, counter_stepen);
+        counter_stepen++;
     }
     return dec;     // Оскільки функція типу int - наша функция повертає число у десятковій формі
+}
+
+int strlen_buffer(char* buffer)
+{
+    int res = 0;
+    while ((*buffer != '\n') && (*buffer != '\0'))
+    {
+        buffer++;
+        res++;
+    }
+    return res;
+}
+
+int stepen(int x, int a)
+{
+    int result = 1;
+    for (int i = 0; i < a; i++)
+    {
+        result *= x;
+    }
+    return result;
 }
