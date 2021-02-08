@@ -4,6 +4,7 @@
 #define DK_TOOL_H
 #ifdef DK_TOOL_H
 
-int just(char* ty);
+int peretvorenna_chisla(char* ty);
+int strlen_buffer(char* ty);
 
 #endif
