@@ -7,7 +7,7 @@
 
 int get_chrs_pos(char *charset, char *string, int chrs_buff_size, int str_buff_size) {
 	char *cstr = (char *) malloc(chrs_buff_size + 1);
-	*(cstr + chrs_buff_size + 1) = '\0';
+	*(cstr + chrs_buff_size) = '\0';
 
 	int max = str_buff_size - (chrs_buff_size - 1);
 	
