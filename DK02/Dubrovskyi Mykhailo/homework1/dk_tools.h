@@ -1,11 +1,14 @@
 #ifndef _DK_TOOLS_H_
 #define _DK_TOOLS_H_
 
+// Enums
+enum Type {Int, Char, Long};
+
 //to do: matrixes
 
 int get_chrs_pos(char *charset, char *string, int chrs_buff_size, int str_buff_size);
 
-void * rearrange(void *array);
+void * rearrange(void *array, int size, enum Type t);
 
 int word_counter(char *array);
 
