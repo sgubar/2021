@@ -16,6 +16,8 @@ int main() {
     int **arr2 = getMatrix(row, col);
 
     int **resarr = sumMatr(arr1, arr2, row, col); //виклик функції суми
+    
+    delete_matrix(arr2, row);//чистимо матрицю
 
     printMatrix(resarr, row, col);//вивід матриці
     
