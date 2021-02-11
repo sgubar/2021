@@ -19,4 +19,6 @@ void delete_matrix(int **matrix, int row);
 int *create_matrix1(int row, int col);
 void delete_matrix1(int *matrix);
 
+int dk_strlen(char *string);
+
 #endif /* math_h */
