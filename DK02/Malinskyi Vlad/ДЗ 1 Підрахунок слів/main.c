@@ -4,12 +4,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "dk_tool.h"
 
+#include "DK_TOOL.h"
 
-
-
-
+int sum(char* s);
 
 void main(void)
 {
@@ -17,9 +15,9 @@ void main(void)
     s = (char*) calloc(255, sizeof(char));
     printf("Vvedite predlojenie: ");
     gets(s);
-    func(s);
-    free(s);
+    sum(s);
     return 0;
     system("pause");
 }
+
 

@@ -3,10 +3,10 @@
 
 int**  getMatrix(int row, int col) {
     int i=0, j=0;
-    int **arr = (int **)malloc(sizeof(int *) * row);
+    int **arr = (int **)malloc(sizeof(int *) * row);//виділяємо пам'ять
 
     for(i = 0; i < row; i++) {
-        arr[i] = (int *)malloc(sizeof(int *) * col);//виділяємо пам'ять
+        arr[i] = (int *)malloc(sizeof(int *) * col);
     }
 
     for(i = 0; i < row; i++) {
@@ -20,10 +20,8 @@ int**  getMatrix(int row, int col) {
     }
         return arr;
 }
-int **sumMatr(int row, int col) {//функція суми
+int **sumMatr(int **arr1, int **arr2, int row, int col) {//функція суми
     int i, j;
-    int **arr1 = getMatrix(row, col);//створюємо масиви
-    int **arr2 = getMatrix(row, col);
     
     for(i = 0; i < row; i++){
             for(j = 0; j < col; j++){
@@ -32,7 +30,6 @@ int **sumMatr(int row, int col) {//функція суми
         }
         delete_matrix(arr2, row);//чистимо матрицю
     return arr1;
-
 }
 void delete_matrix(int **arr, int row) {//чистка матриці
 	if (arr == NULL) {
@@ -43,9 +40,9 @@ void delete_matrix(int **arr, int row) {//чистка матриці
     free(arr);
 }
 
-void printMatrix(int **resarr, int row, int col) {
+void printMatrix(int **resarr, int row, int col) {//виводимо матрицю
     int i, j;
-    for(i = 0; i < row; i++) { //виводимо матрицю
+    for(i = 0; i < row; i++) { 
         for(j = 0; j < col; j++) {
             printf("%4d", resarr[i][j]);
         }
