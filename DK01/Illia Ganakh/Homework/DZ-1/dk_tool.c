@@ -28,7 +28,6 @@ int **sumMatr(int **arr1, int **arr2, int row, int col) {//функція сум
                 arr1[i][j] += arr2[i][j];//переписуємо результат в першу матрицю
             }
         }
-        delete_matrix(arr2, row);//чистимо матрицю
     return arr1;
 }
 void delete_matrix(int **arr, int row) {//чистка матриці
