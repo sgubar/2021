@@ -29,8 +29,10 @@ int get_chrs_pos(char *charset, char *string, int chrs_buff_size, int str_buff_s
 			*(cstr + j) = *(string + i + j);
 		}
 
-		if(!strcmp(charset, cstr))
+		if(!strcmp(charset, cstr)) {
+			free(cstr);
 			return i;
+		}
 
 	}
 
@@ -110,7 +112,7 @@ int count_words(char *string, int str_buff_size) { // рахує кількіс�
 	return word_amount;
 }
 
-int base16_to_base10(char *num) { // переводить з шістнадцяткової системи числення у десятичну
+int base16_to_base10(char *num) { // переводить з шістнадцяткової системи числення у десяткову
 	int size = strlen(num);
 
 	if(size > 4)
