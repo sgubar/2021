@@ -32,3 +32,4 @@ int main(int argc, const char* argv[]) {
 	//printf("%lf\n", power(2, -2));
 	return 0;
 }
+
