@@ -68,7 +68,7 @@ int main(int argc, const char * argv[]) {
 	a = 6;
 
 	// insert code here...
-	printf("Hello, World!\n");
+	printf("Hello, World! len: %d\n", dk_strlen("test of len"));
 
 	return 0;
 }

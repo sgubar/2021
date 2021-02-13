@@ -1,24 +1,14 @@
-#ifndef FUNCTION_H_INCLUDED
-#define FUNCTION_H_INCLUDED
+#ifndef DK_TOOL_H_INCLUDED
+#define DK_TOOL_H_INCLUDED
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+int sum(char* s);
 
 
-int func(char* s)
-{
-    int count, i;
-    count = 0;
-    for (i = 0; i<strlen(s); i++)
-    {   if(isdigit(s[i]))
-            {
-            printf("Vvedite tol'ko slova");
-            printf("\n");
-            return 0;
-            }
-        if ((s[i] == ' ') && (s[i+1] != ' '))
-        {
-            count = count + 1;
-        }
-    }
-    printf("V predlojenii: %d slov", count+1);
-    return 0;
-}
-#endif // FUNCTION_H_INCLUDED
+#endif // DK_TOOL_H_INCLUDED

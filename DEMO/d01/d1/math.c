@@ -82,3 +82,14 @@ void delete_matrix1(int *matrix) {
 		free(matrix);
 	}
 }
+
+int dk_strlen(char *string) {
+	int result = 0;
+
+	while(*string != '\0') {
+		string ++;
+		result ++;
+	}
+
+	return result;
+}

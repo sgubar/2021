@@ -1,3 +1,3 @@
 # Mykhailo Dubrovskyi src tree
-- math library (./homework1)
+- dk_tools module (./homework1)
 
