@@ -7,17 +7,20 @@ int main(int argc, const char* argv[]) {
 	int A, B, C;
 	do {
 		printf("Type a A (within >250 and <-100):");
+		scanf_s("%d",&A);
 		if (A > 250 || A < -100) {
 			printf("A is very big or small\n");
 			return 0;
 		}
 
 		printf("Type a B(within >250 and <-100):");
+		scanf_s("%d",&B);
 		if (B > 250 || B < -100) {
 			printf("B is very big or small\n");
 			return 0;
 		}
 		printf("Type a C(within >250 and <-100):");
+		scanf_s("%d",&C);
 		if (C > 250 || C < -100) {
 			printf("C is very big or small\n");
 			return 0;
