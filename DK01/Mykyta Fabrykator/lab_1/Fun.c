@@ -64,7 +64,7 @@ void suma(int *Q, int A, int C){
         }
         D++;
     }
-    printf("\nÑóììà ôàêòîðèàëîâ: ");
+    printf("\nСумма факториалов: ");
     int flag = 0;
     int j = 0;
     while(j<n){
