@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include "math.h"
+
+int main(int argc, const char* argv[]) {
+	int flag = 1;
+
+	int A, B, C;
+	do {
+		printf("Type a A (within >250 and <-100):");
+		scanf_s("%d",&A);
+		if (A > 250 || A < -100) {
+			printf("A is very big or small\n");
+			return 0;
+		}
+
+		printf("Type a B(within >250 and <-100):");
+		scanf_s("%d",&B);
+		if (B > 250 || B < -100) {
+			printf("B is very big or small\n");
+			return 0;
+		}
+		printf("Type a C(within >250 and <-100):");
+		scanf_s("%d",&C);
+		if (C > 250 || C < -100) {
+			printf("C is very big or small\n");
+			return 0;
+		}
+		printf("\n");
+		
+		double Q = q(A, B, C);
+		printf("%lf\n", Q);
+		printf("Write 1 to start again: ");
+		scanf_s("%d", &flag);
+	} while (flag == 1);
+	//printf("%lf\n", power(2, -2));
+	return 0;
+}
+
