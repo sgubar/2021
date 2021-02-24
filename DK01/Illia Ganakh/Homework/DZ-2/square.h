@@ -1,5 +1,5 @@
-#ifndef POINT
-#define POINT
+#ifndef SQUARE
+#define SQUARE
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -12,7 +12,7 @@ typedef struct tag_square{
     Point d;
 } Square;
 
-Square *create_Square(Point *a, Point *b, Point *c, Point *d);
 void PrintSquareInfo(Square *name);
 void deleteSquare(Square *name);
+Square *create_Square();
 #endif
