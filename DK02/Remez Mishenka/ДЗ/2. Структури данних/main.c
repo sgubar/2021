@@ -9,29 +9,27 @@
 
 int main(void)
 {
-    int x1, y1;
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    Dot* ara_ara = make_hollw_arr_dot(4);
-    for (int i = 0; i < 4; i++)
+
+    //int chck = check_square();
+
+    Dot* A = input_dot();
+    Dot* B = input_dot();
+    Dot* C = input_dot();
+    Dot* D = input_dot();
+
+    Square* Slozhna = make_square(A, B, C, D);
+
+    if (check_square(Slozhna))
     {
-        printf("Введите параметры точки %d\nX:", i + 1);
-        scanf_s("%d", &x1);
-        printf("Y:");
-        scanf_s("%d", &y1);
-        (ara_ara + i)->x = x1;
-        (ara_ara + i)->y = y1;
+        print_square(Slozhna);
     }
-    for (int i = 0; i < 4; i++)
-    {
-        printf("\n");
-        printf("Точка%d (%d;%d)\n", i, (ara_ara + i)->x, (ara_ara + i)->y);
-    }
+    else
+        printf("\nЕбалай введи норм числа\n");
+    //print_square(Slozhna);
 
-    delete_dot(ara_ara);
-
-    draw_square();
-
+    delete_square(Slozhna);
     system("pause");
 }
 
