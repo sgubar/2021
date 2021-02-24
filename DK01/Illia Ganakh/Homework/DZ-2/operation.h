@@ -1,5 +1,5 @@
-#ifndef POINT2
-#define POINT2
+#ifndef OPERATION
+#define OPERATION
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
