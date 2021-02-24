@@ -11,6 +11,16 @@ Point *createPoint() {//створення точки
   return point;
 }
 
+int isEqualPoints(Point *a, Point *b) {//перевірка на однаковість точок
+	if (NULL == a || NULL == b) {
+		return 0;
+	}
+  if(a == b || (a->x == b->x && a->y == b->y)) {
+    return 0;
+  }
+  return 1;
+}
+
 void printPoint(Point *p) {//вивід точки
   if (NULL == p) {
     return;
@@ -23,4 +33,3 @@ void deletePoint(Point *p) {//видалення точки
     free(p);
   }
 }
-
