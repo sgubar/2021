@@ -6,15 +6,28 @@
 #include "square.h"
 
 int main(void) {
-  Point *a = createPoint();//створюємо точки
-  Point *b = createPoint();
-  Point *c = createPoint();
-  Point *d = createPoint();
-  Square *sq1 = create_Square(a, b, c, d);//створюємо квадрат
+  Square *sq1 = create_Square();//створюємо квадрат
   PrintSquareInfo(sq1);//вивід координат, сторони і площі квадрата
-  deletePoint(a);//чистимо память
-  deletePoint(b);
-  deletePoint(c);
-  deletePoint(d);
-  deleteSquare(sq1);
+  deleteSquare(sq1);//видалення квадрата
+
+
+
+int n;//приклад використання функції в статичному масиві
+  printf("Введіть кількість квадратів від 1 до 4:\n");
+      do {
+        scanf("%d", &n);
+      } while(n < 0 || n > 4);
+
+      Square *square[n];
+
+    for(int i=0; i < n; i++) {
+       square[i] = create_Square();
+    }
+    int i = 0;
+    for(int i=0; i < n; i++) {
+        PrintSquareInfo(square[i]);
+    }
+    for(int i=0; i < n; i++) {
+        deleteSquare(square[i]);
+    }
 }
