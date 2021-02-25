@@ -23,7 +23,6 @@ int n;//приклад використання функції в статичн
     for(int i=0; i < n; i++) {
        square[i] = create_Square();
     }
-    int i = 0;
     for(int i=0; i < n; i++) {
         PrintSquareInfo(square[i]);
     }
