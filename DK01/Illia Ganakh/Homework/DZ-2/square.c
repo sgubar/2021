@@ -24,8 +24,13 @@ Square *create_Square() {//створення квадрата
     c = createPoint();
     d = createPoint();
 
-      if (lenght_Line(a, b) != lenght_Line(b, c) || lenght_Line(a, c) != lenght_Line(b, d) || isEqualPoints(a, c) != 1 || isEqualPoints(a, b) != 1 || isEqualPoints(b, c) != 1)
+      if (lenght_Line(a, b) != lenght_Line(b, c) || lenght_Line(a, c) != lenght_Line(b, d) || isEqualPoints(a, c) != 1 || isEqualPoints(a, b) != 1 || isEqualPoints(b, c) != 1) {
+      deletePoint(a);
+      deletePoint(b);
+      deletePoint(c);
+      deletePoint(d);
         printf("ви ввели неправильні координати\n");
+        }
     } while (lenght_Line(a, b) != lenght_Line(b, c) || lenght_Line(a, c) != lenght_Line(b, d) || isEqualPoints(a, c) != 1 || isEqualPoints(a, b) != 1 || isEqualPoints(b, c) != 1);
 
   Square *square = (Square *)malloc(sizeof(Square));
