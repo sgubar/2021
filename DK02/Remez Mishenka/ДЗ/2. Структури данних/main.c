@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <Windows.h>
-#include "square.h"
+#include "Figures.h"
 
 
 
@@ -20,6 +20,8 @@ int main(void)
     Dot* D = input_dot();
 
     Square* Slozhna = make_square(A, B, C, D);
+
+    figures* hentai = make_many_squares(1);
 
     if (check_square(Slozhna))
     {
