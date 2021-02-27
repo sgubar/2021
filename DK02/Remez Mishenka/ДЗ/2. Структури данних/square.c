@@ -6,7 +6,7 @@
 
 Square* make_square(Dot* A, Dot* B, Dot* C, Dot* D)
 {
-	Square* square = (Square*)malloc(sizeof(Square));
+	Square* square = (Square*)calloc(1, sizeof(Square));
 	square->A = A;
 	square->B = B;
 	square->C = C;
@@ -52,7 +52,9 @@ void draw_square(void)
 
 int check_square(Square* square)
 {
-	if ((long_line(square->A, square->B) == long_line(square->A, square->D))&& (long_line(square->A, square->C) == long_line(square->B, square->D)))
+	if (((square->A->x == square->B->x) && (square->A->y == square->B->y)) || ((square->B->x == square->C->x) && (square->B->y == square->C->y)) || ((square->C->x == square->D->x) && (square->C->y == square->D->y)) || ((square->A->x == square->D->x) && (square->A->y == square->D->y)))
+		return 0;
+	if ((long_line(square->A, square->B) == long_line(square->A, square->D)) && (long_line(square->A, square->C) == long_line(square->B, square->D)))
 		return 1;
 	return 0;
 }
@@ -67,9 +69,11 @@ void count_square(Square* square)
 {
 	float a = long_line(square->A, square->B);
 	float d = long_line(square->A, square->C);
+	float P = 4 * a;
 	float S = a * a;
 	printf("\nСторона: %f", a);
 	printf("\nДиагональ: %f", d);
+	printf("\nПериметр: %f", P);
 	printf("\nПлощадь: %f\n", S);
 	//return S;
 }

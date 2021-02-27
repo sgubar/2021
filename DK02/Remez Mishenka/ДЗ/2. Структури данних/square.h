@@ -1,4 +1,3 @@
-#pragma once
 #include "dot.h"
 
 #define square_h
