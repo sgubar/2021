@@ -20,7 +20,7 @@ void printPoint(PtCord* p) {
 		return;
 	}
 
-	printf("%d,\t%d", p->x, p->y);
+	printf("(%d, %d)", p->x, p->y);
 }
 
 PtCord* copyPoint(PtCord* p) {

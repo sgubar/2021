@@ -1,14 +1,16 @@
 #include <stdio.h>
-#include "line.h"
-#include "point.h"
-#include"triangle.h"
+
+#include"areytriangle.h"
 int main() {
-	PtCord* point1 = createPoint(2, 0);
-	PtCord* point2 = createPoint(4, 3);
-	PtCord* point3 = createPoint(6, 0);
-	Line* Line1_2 = createLineByPoints(point1, point2);
-	Line* Line2_3 = createLineByPoints(point2, point3);
-	Line* Line1_3 = createLineByPoints(point1, point3);
-	Tria* Test = createTriangleByLine(Line1_2, Line1_3, Line2_3);
+	AreyTria* One = createAreyTria();
+
+	PutTriangleInArey(One, createTriangleByPoints(createPoint(0, 0), createPoint(0, 1), createPoint(0, 0)));// wrond tria just will skip
+	PutTriangleInArey(One, createTriangleByPoints(createPoint(1, 0), createPoint(0, 0), createPoint(0, 1)));
+	PutTriangleInArey(One, createTriangleByPoints(createPoint(2, 0), createPoint(0, 0), createPoint(2, 1)));
+	printAreyTria(One);
+	deleteAreyTria(One);
+	One = NULL;
+	printAreyTria(One);
+	
 	return 0;
 }

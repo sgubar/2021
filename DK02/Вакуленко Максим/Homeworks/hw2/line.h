@@ -1,8 +1,8 @@
-
+#include<stdio.h>
 #include"point.h"
 #define LINE_H
 #ifdef LINE_H
-#include<stdio.h> 
+ 
 typedef struct {
 	PtCord* A;
 	PtCord* B;

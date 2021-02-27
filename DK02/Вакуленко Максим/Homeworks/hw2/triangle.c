@@ -1,24 +1,30 @@
 #include"triangle.h"
 #include<stdlib.h>
 #include <math.h>
-Tria* createTriangleByLine(Line* ln1, Line* ln2, Line* ln3) {
-	if (NULL == ln1 || NULL == ln2 || NULL == ln3) {
-		return NULL;
-	}
-	else if (TestOfLife(ln1, ln2, ln3) == 0) {
-		return NULL;
-	}
+Tria* createTriangleByPoints(PtCord* point1, PtCord* point2, PtCord* point3) {
+	Line* Line1_2 = createLineByPoints(point1, point2);
+	Line* Line2_3 = createLineByPoints(point2, point3);
+	Line* Line1_3 = createLineByPoints(point1, point3);
 	Tria* triangle = (Tria*)malloc(sizeof(Tria));
-		triangle->line_1 = copyLine(ln1);
-		triangle->line_2 = copyLine(ln2);
-		triangle->line_3 = copyLine(ln3);
+	if (NULL == Line1_2 || NULL == Line2_3 || NULL == Line1_3) {
+		return NULL;
+	}
+	else if (TestOfLife(point1, point2, point3) == 0) {
+		return NULL;
+	}
+		triangle->line_1 = copyLine(Line1_2);
+		triangle->line_2 = copyLine(Line2_3);
+		triangle->line_3 = copyLine(Line1_3);
+		deledeLine(Line1_2);
+		deledeLine(Line2_3);
+		deledeLine(Line1_3);
 		return triangle;
 	
 	
 }
 
-int TestOfLife(Line* ln1, Line* ln2, Line* ln3) {
-	if (lenghtLine(ln1) + lenghtLine(ln2) < lenghtLine(ln3) || lenghtLine(ln1) + lenghtLine(ln3) < lenghtLine(ln2) || lenghtLine(ln3) + lenghtLine(ln2) < lenghtLine(ln1)) {
+int TestOfLife(PtCord* point1, PtCord* point2, PtCord* point3) {
+	if (isEqualPoints(point1, point2) == 1 || isEqualPoints(point1, point3) == 1 || isEqualPoints(point2, point3) == 1) {
 		return 0;
 	}
 	return 1;
@@ -39,20 +45,30 @@ double SquareOfTriangle(Tria* Per) {//Формула герона
 	else { return 0; }
 }
 
-void DrawTriangle(){
+
+void DrawTriangle() {
+	printf("\n");
 	for (int i = 1; i <= 4; i++) {
 		for (int j = 0; j < (4 - i); j++) {
 			printf(" ");
 		}
-		for (int y = 0; y < i; y++) {
-			printf("/");
+		
+		printf("/");
+		if (i != 4) {
+			for (int b = 1; b < i; b++) {
+				printf("  ");
+			}
 		}
-		printf("");
-		for (int y = 0; y < i; y++) {
+		if (i == 4) {
+			for (int c = 1; c < i; c++) {
+				printf("__");
+			}
+
+		}
 			printf("\\");
-		}
 		printf("\n");
 	}
+	printf("\n");
 }
 void deleteTria(Tria* l) {
 	if (l != NULL) {
@@ -62,7 +78,19 @@ void deleteTria(Tria* l) {
 	}
 }
 
+Tria* copyTria(Tria* t) {
+	if (t == NULL) {
+		return;
+	}
+	Tria* Copy = createTriangleByPoints(copyPoint(t->line_1->A), copyPoint(t->line_2->A), copyPoint(t->line_2->B));
+	return Copy;
+}
+
 void printTriange(Tria* test) {
+	if (test == NULL) {
+		printf("Error_Print_Triangle\n");
+		return 0;
+	}
 	DrawTriangle();
 	printf("Line_1: ");
 	printLine(test->line_1);

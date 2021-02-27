@@ -21,7 +21,7 @@ void deledeLine(Line* l) {
 }
 
 void printLine(Line* l) {
-	if (NULL != l) {
+	if(NULL != l) {
 		printPoint(l->A);
 		printf("-");
 		printPoint(l->B);
