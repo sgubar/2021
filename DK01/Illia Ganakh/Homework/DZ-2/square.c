@@ -1,5 +1,6 @@
 #include "square.h"
 #include "operation.h"
+#include "point.h"
 
 void PrintSquareInfo(Square *name) {//вивід координат, сторони і площі квадрата
   printPoint(&name->a);
@@ -7,18 +8,31 @@ void PrintSquareInfo(Square *name) {//вивід координат, сторо�
   printPoint(&name->c);
   printPoint(&name->d);
   printf("сторона квадрата %lf\n", lenght_Line(&name->a, &name->b));
-  printf("площа квадрата %lf\n", area(&name->a, &name->b));  
+  printf("площа квадрата %lf\n", area(&name->a, &name->b));
 }
 
-Square *create_Square(Point *a, Point *b, Point *c, Point *d) {//створення квадрата
-  if (lenght_Line(a, b) != lenght_Line(b, c)) {
-    printf("ви ввели непраивльні координати\n");
-    exit(-1);
-  }
-  if (lenght_Line(a, c) != lenght_Line(b, d)) {
-    printf("ви ввели неправильні координати\n");
-    exit(-1);
-  }
+
+Square *create_Square() {//створення квадрата
+  Point *a;
+  Point *b;
+  Point *c;
+  Point *d;
+  do {
+    printf("\nВведіть координати квадрата\n");
+    a = createPoint();
+    b = createPoint();
+    c = createPoint();
+    d = createPoint();
+
+      if (lenght_Line(a, b) != lenght_Line(b, c) || lenght_Line(a, c) != lenght_Line(b, d) || isEqualPoints(a, c) != 1 || isEqualPoints(a, b) != 1 || isEqualPoints(b, c) != 1) {
+      deletePoint(a);
+      deletePoint(b);
+      deletePoint(c);
+      deletePoint(d);
+        printf("ви ввели неправильні координати\n");
+        }
+    } while (lenght_Line(a, b) != lenght_Line(b, c) || lenght_Line(a, c) != lenght_Line(b, d) || isEqualPoints(a, c) != 1 || isEqualPoints(a, b) != 1 || isEqualPoints(b, c) != 1);
+
   Square *square = (Square *)malloc(sizeof(Square));
   if (NULL != square) {
     square->a = *a;

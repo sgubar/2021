@@ -1,47 +1,30 @@
-﻿// square.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <Windows.h>
-#include "square.h"
-
-
+#include "Figures.h"
 
 int main(void)
 {
-    int x1, y1;
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    Dot* ara_ara = make_hollw_arr_dot(4);
-    for (int i = 0; i < 4; i++)
-    {
-        printf("Введите параметры точки %d\nX:", i + 1);
-        scanf_s("%d", &x1);
-        printf("Y:");
-        scanf_s("%d", &y1);
-        (ara_ara + i)->x = x1;
-        (ara_ara + i)->y = y1;
-    }
-    for (int i = 0; i < 4; i++)
-    {
-        printf("\n");
-        printf("Точка%d (%d;%d)\n", i, (ara_ara + i)->x, (ara_ara + i)->y);
-    }
 
-    delete_dot(ara_ara);
+    Dot* A = input_dot();
+    Dot* B = input_dot();
+    Dot* C = input_dot();
+    Dot* D = input_dot();
 
-    draw_square();
+    Square* Slozhna = make_square(A, B, C, D);
+    figures* arr_squares = make_many_squares(1);
+    set_square_by_index(arr_squares, Slozhna, 10);
+
+    if (check_square(get_square_dy_index(arr_squares, 10)))
+    {
+        print_square(get_square_dy_index(arr_squares, 10));
+    }
+    else
+        printf("\nПлохой человек введи нормальные координаты вершин квадрата\n");
+
+    delete_square(Slozhna);
+    delete_figures(arr_squares);
 
     system("pause");
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка .программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
