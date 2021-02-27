@@ -8,4 +8,5 @@ double power(int base, int pow);
 long factorial(int base);
 double q(int A, int B, int C);
 
+
 #endif/*math_h*/

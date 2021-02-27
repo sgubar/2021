@@ -23,6 +23,11 @@
 	}
 
 double q(int A, int B, int C) {
+ int sigma = 0;
+    for (int D = 0; D <= B; D++){
+        sigma += factorial(D);
+    }
+    return A * B / (double)(B + power(C, 2)) + 1.0 * sigma;
 
-	return power(A * B) / (double)(B + power(C, 2)) + (double)factorial(0, B);
+	
 }

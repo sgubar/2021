@@ -16,3 +16,23 @@ unsigned long int factorial(int A) {
     return res;
   }
 }
+
+int get_check_num_type1(int a, int border1, int border2) {
+printf("Введіть число більше %d і менше %d:\n", border1, border2);
+  do {
+    scanf("%d", &a);
+    if (a <= border1 || a >= border2)
+      printf("число повинно бути більше %d і менше %d:\n", border1, border2);
+  } while (a <= border1 || a >= border2);
+  return a;
+}
+
+int get_check_num_type2(int a, int exception, int border1, int border2) {
+  printf("Введіть число яке не дорівнює %d, більше %d, і менше %d:\n", exception, border1, border2);
+  do {
+    scanf("%d", &a);
+    if (a == exception || a <= border1 || a >= border2)
+      printf("число повинно не дорівнювати %d, бути більше %d і менше %d\n", exception, border1, border2);
+  } while (a == exception || a <= border1 || a >= border2);
+  return a;
+}
