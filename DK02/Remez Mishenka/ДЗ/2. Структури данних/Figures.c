@@ -20,7 +20,7 @@ void set_square_by_index(figures* arr_s, Square* square, int index)
 	}
 
 	if (index >= arr_s->size)
-		reallocate_figures(arr_s, index + 1);//перерозпределение
+		reallocate_figures(arr_s, index + 1);
 	arr_s->square[index] = square;
 	return;
 }
@@ -53,7 +53,7 @@ void delete_figures(figures* squares)
 	}
 	if (squares->square != NULL)
 	{
-		delete_square(squares->square);
+		free(squares->square);
 	}
 	free(squares);
 }
