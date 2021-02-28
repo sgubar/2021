@@ -57,10 +57,10 @@ double perimeterRectangle(Rectangle* rec)
 	long dY0 = rec->A->y - rec->B->y;
 	long dX1 = rec->B->x - rec->C->x;
 	long dY1 = rec->B->y - rec->C->y;
-	long dX2 = rec->B->x - rec->C->x;
-	long dY2 = rec->B->y - rec->C->y;
-	long dX3 = rec->B->x - rec->C->x;
-	long dY3 = rec->B->y - rec->C->y;
+	long dX2 = rec->C->x - rec->D->x;
+	long dY2 = rec->C->y - rec->D->y;
+	long dX3 = rec->D->x - rec->A->x;
+	long dY3 = rec->D->y - rec->A->y;
 
 	return (sqrt(dX0 * dX0 + dY0 * dY0) + sqrt(dX1 * dX1 + dY1 * dY1) + sqrt(dX2 * dX2 + dY2 * dY2) + sqrt(dX3 * dX3 + dY3 * dY3));
 }
