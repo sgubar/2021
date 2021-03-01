@@ -8,4 +8,5 @@ int main(void)
 	//Point* a = getPoint();
 	PCircle c = makeCircle(l = makeLine(p1 = getPoint(), p2 = getPoint()));
 	printCircle(c);
+	deleteCircle(c);
 }
