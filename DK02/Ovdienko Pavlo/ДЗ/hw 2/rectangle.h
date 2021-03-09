@@ -19,5 +19,6 @@ void printRectangle(Rectangle* rec);
 double perimeterRectangle(Rectangle* rec);
 double squareRectangle(Rectangle* rec);
 int isEqualRectangle(Rectangle* srec, Rectangle* svrec);
+int CheckRectangle(Rectangle* rec);
 
 #endif
