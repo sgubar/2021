@@ -9,8 +9,9 @@ typedef struct tag_point {
     int y;
 } Point;
 
-Point *createPoint();
+Point *createPointByInput();
 void printPoint(Point *p);
 void deletePoint(Point *p);
+double lenght_Line(Point *a, Point *b);
 int isEqualPoints(Point *a, Point *b);
 #endif
