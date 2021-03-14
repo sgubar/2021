@@ -9,7 +9,7 @@ void readNumber(int *a, int flag){
 	do {
 		var = scanf("%i", a);
 		scanf("%*[^\n]");
-		if (var==0 || *a>b || *a<0) printf("ERROR\nÂâåäèòå êîððåêòíîå ÷èñëî: ");
+		if (var==0 || *a>b || *a<0) printf("ERROR\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾: ");
 	}while (var!=1 || *a>b || *a<0);
 }
 
@@ -26,10 +26,10 @@ void area(f a[], int i){
 int testing(f a[], int i){
 	area(a, i);
 	if (a[i].s<=0){
-		printf("Òðåóãîëüíèê íå ñóùåñòâóåò\n\n");
+		printf("Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚\n\n");
 		return 0;
 	}else{
-		printf("Òðåóãîëüíèê äîáàâëåí\n\n");
+		printf("Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½\n\n");
 		return 1;
 	}
 }
@@ -40,7 +40,7 @@ void add(f a[], int i){
 	do{
 		printf("\n");
 		do{
-			printf("Âåðøèíà A. Ââåäèòå êîîðäèíàòû (x y):\n");
+			printf("Ð’ÐµÑ€ÑˆÐ¸Ð½Ð° A. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ (x y):\n");
 			var = scanf("%f %f", &n[0], &n[1]);
 			scanf("%*[^\n]");
 		}while(var!=2);
@@ -48,7 +48,7 @@ void add(f a[], int i){
 		
 		var = 0;
 		do{
-			printf("Âåðøèíà B. Ââåäèòå êîîðäèíàòû (x y):\n");
+			printf("Ð’ÐµÑ€ÑˆÐ¸Ð½Ð° B. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ (x y):\n");
 			var = scanf("%f %f", &n[0], &n[1]);
 			scanf("%*[^\n]");
 		}while(var!=2);
@@ -56,7 +56,7 @@ void add(f a[], int i){
 		
 		var = 0;
 		do{
-			printf("Âåðøèíà C. Ââåäèòå êîîðäèíàòû (x y):\n");
+			printf("Ð’ÐµÑ€ÑˆÐ¸Ð½Ð° C. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ (x y):\n");
 			var = scanf("%f %f", &n[0], &n[1]);
 			scanf("%*[^\n]");
 		}while(var!=2);
