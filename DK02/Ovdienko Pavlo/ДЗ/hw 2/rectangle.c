@@ -8,8 +8,35 @@ Rectangle* createRectangleByCoords(int x1, int y1, int x2, int y2, int x3, int y
 		rec->B = createPoint(x2, y2);
 		rec->C = createPoint(x3, y3);
 		rec->D = createPoint(x4, y4);
+
+		if (CheckRectangle(rec) == 1) {
+			printf("Coords of rectangle is rorrect.\n");
+			return rec;
+		}
+		else {
+			return 0;
+		}
 	}
-	return rec;
+}
+
+int CheckRectangle(Rectangle* rec) {
+	
+
+	long dX0 = rec->A->x - rec->C->x;
+	long dY0 = rec->A->y - rec->C->y;
+	long dX1 = rec->B->x - rec->D->x;
+	long dY1 = rec->B->y - rec->D->y;
+
+
+	int Diagonal1 = sqrt(dX0 * dX0 + dY0 * dY0);
+	int Diagonal2 = sqrt(dX1 * dX1 + dY1 * dY1);
+
+	if (Diagonal1 == Diagonal2) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 
 void deleteRectangle(Rectangle* rec)
