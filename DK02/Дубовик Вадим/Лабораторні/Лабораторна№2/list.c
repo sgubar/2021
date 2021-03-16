@@ -195,14 +195,6 @@ pList createListWithXEl(int elements)
 	return list;
 }
 
-
-
-
-
-
-
-
-
 //My task functions
 int getNum(void)
 {
@@ -212,7 +204,7 @@ int getNum(void)
 	if (i == NULL)
 	{
 		printf("You've entered the wrong symbol,\nPlease, enter only numbers.\n");
-		return NULL;
+		return -1;
 	}
 	printf("You have just entered: %d\n", i);
 	return i;
@@ -230,8 +222,8 @@ int findAverage(pList list)
 	{
 		sum = sum + currentEl->value;
 	}
-	printf("The average number is: %d\n", sum / list->AmountOfEl);
-	return sum / list->AmountOfEl;
+	printf("The average number is: %d\n", sum / list->AmountOfEl+1);
+	return sum / list->AmountOfEl+1;
 }
 void deleteFirstElLessThanValue(pList list, int index)
 {
