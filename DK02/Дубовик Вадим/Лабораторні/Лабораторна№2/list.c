@@ -3,7 +3,7 @@
 //List element functions
 pListEl createListEl(int value)
 {
-	pListEl NewEl = (pListEl)malloc(sizeof(pListEl));
+	pListEl NewEl = (pListEl)malloc(sizeof(ListEl));
 	NewEl->value = value;
 	NewEl->next = NULL;
 	return NewEl;
@@ -28,7 +28,7 @@ void deleteListEl(pListEl listEl)
 //List functions
 pList createList(void)
 {
-	pList newList = (pList)malloc(sizeof(pList));
+	pList newList = (pList)malloc(sizeof(List));
 	if (newList != NULL)
 	{
 		newList->head = NULL;
@@ -167,7 +167,7 @@ void removeElFromList(pList list, int index)
 	{
 		return;
 	}
-	if (list->head = NULL)
+	if (list->head == NULL)
 	{
 		return;
 	}
