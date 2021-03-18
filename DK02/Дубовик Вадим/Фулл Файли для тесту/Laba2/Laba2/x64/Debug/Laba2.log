@@ -1,0 +1,6 @@
+﻿  list.c
+D:\Projects\Laba2\Laba2\Laba2\list.h(14,2): warning C4091: typedef : пропускается слева от "tagListEl", когда ни одна переменная не объявлена
+D:\Projects\Laba2\Laba2\Laba2\list.h(22,2): warning C4091: typedef : пропускается слева от "tagList", когда ни одна переменная не объявлена
+D:\Projects\Laba2\Laba2\Laba2\list.c(212,15): warning C4047: ==: "int" отличается по уровням косвенного обращения от "void *"
+D:\Projects\Laba2\Laba2\Laba2\list.c(215,14): warning C4047: return: "int" отличается по уровням косвенного обращения от "void *"
+  Laba2.vcxproj -> D:\Projects\Laba2\Laba2\x64\Debug\Laba2.exe
