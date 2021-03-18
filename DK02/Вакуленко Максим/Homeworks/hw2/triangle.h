@@ -14,7 +14,8 @@ void deleteTria(Tria* l);
 int TestOfLife(Line* ln1, Line* ln2, Line* ln3);
 double PerimeterOfTriangle(Tria* Per);
 double SquareOfTriangle(Tria* Per);
-//void printTriange(Tria* test);
+
+void printTriange(Tria* test);
 void DrawTriangle();
 Tria* copyTria(Tria* t);
 // Прототип функции

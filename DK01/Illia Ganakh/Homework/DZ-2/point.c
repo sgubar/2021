@@ -1,6 +1,6 @@
 #include "point.h"
 
-Point *createPoint() {//створення точки
+Point *createPointByInput() {//створення точки
   Point *point = (Point *)malloc(sizeof(Point));
   if (NULL != point) {
     printf("введіть координату X:");
@@ -9,6 +9,16 @@ Point *createPoint() {//створення точки
     scanf("%d", &point->y);
   }
   return point;
+}
+
+double lenght_Line(Point *a, Point *b) {//довжина лінії
+  if (NULL == a || NULL == b) {
+		return -1;
+	}
+  long dX = a->x - b->x;
+  long dY = a->y - b->y;
+
+  return sqrt(dX * dX + dY * dY);
 }
 
 int isEqualPoints(Point *a, Point *b) {//перевірка на однаковість точок
