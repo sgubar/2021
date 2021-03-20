@@ -2,7 +2,7 @@
 #include "list1.h"
 
 int main(){
-    FILE *flow = fopen("test1.txt", "r");
+    FILE *flow = fopen("text1.txt", "r");
     char tmpCharacter;
     Row *tmpRow = createRow();
 
