@@ -23,5 +23,5 @@ void deleteIntList(IntList *list);
 int addIntValueToIntList(IntList *list, int value);
 void addRandomValuesToList(IntList *list, int count);
 void printIntList(IntList *list);
-void printReverseIntList(IntList *list);
+void printRIntList(IntList *list);
 #endif
