@@ -52,5 +52,10 @@ double Q_is(int A, int B, int C)
 		printf("Vvedeni chisla ne pidhodyat oskilky znamennik ne mozhe dorivnuvaty 0");
 		return 0;
 	}
+	if (B < 0))
+	{
+		printf("Vvedeni chisla ne pidhodyat oskilky ne isnue factoriala videmnih chisel");
+		return 0;
+	}
 	return result;
 }

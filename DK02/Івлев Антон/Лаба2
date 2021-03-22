@@ -1,0 +1,30 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    int x[argc-1];
+    for(int i=0; i<argc-1; i++)
+    {
+        x[i]=atoi(argv[i+1]);
+    }
+    for(int a=0; a<argc-1; a++)
+    {
+        if(x[a]!=0)
+        {
+            printf("%i ", x[a]);
+            for(int t=a+1; t<argc-1; t++)
+            {
+                if(x[a]==x[t] && x[a]!=0)
+                {
+                    printf("%i ", x[a]);
+                    x[t]=0;
+                }
+            } 
+            printf("\n");
+        }
+    }
+}

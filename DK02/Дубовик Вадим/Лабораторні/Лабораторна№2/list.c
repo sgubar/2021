@@ -89,6 +89,7 @@ int addIntToList(pList list, int value)
 	if (NULL == list->head)
 	{
 		list->head = El;
+		list->AmountOfEl++;
 		return 1;
 	}
 
@@ -116,6 +117,7 @@ int addElToList(pList list, pListEl El)
 	if (NULL == list->head)
 	{
 		list->head = El;
+		list->AmountOfEl++;
 		return 1;
 	}
 
@@ -222,8 +224,8 @@ int findAverage(pList list)
 	{
 		sum = sum + currentEl->value;
 	}
-	printf("The average number is: %d\n", sum / list->AmountOfEl+1);
-	return sum / list->AmountOfEl+1;
+	printf("The average number is: %d\n", sum / list->AmountOfEl);
+	return sum / list->AmountOfEl;
 }
 void deleteFirstElLessThanValue(pList list, int index)
 {
@@ -237,7 +239,19 @@ void deleteFirstElLessThanValue(pList list, int index)
 		return;
 	}
 	pListEl currentEl = list->head;
-	for (; currentEl->value > index; currentEl = currentEl->next);
+	if (currentEl->value < index)
+	{
+		list->head = currentEl->next;
+		deleteListEl(currentEl);
+		return;
+	}
+
+	for (; currentEl->next->value > index; currentEl = currentEl->next);
+	if (currentEl->value == index)
+	{
+		printf("All the elements have the same values,\nHave nothing to delete.\n");
+		return;
+	}
 	pListEl toDelete = currentEl->next;
 	currentEl->next = toDelete->next;
 	deleteListEl(toDelete);

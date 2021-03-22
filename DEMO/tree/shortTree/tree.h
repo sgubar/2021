@@ -29,7 +29,6 @@ ShortTree *createShortTree();
 void destroyShortTree(ShortTree *aTree);
 
 void insertShortValueToTree(ShortTree *aTree, short aValue);
-
 ShortNode *findNodeWithValue(ShortTree *aTree, short aValue);
 void deleteNodeWithValue(ShortTree *aTree, short aValue);
 

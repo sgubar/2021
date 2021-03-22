@@ -12,7 +12,7 @@ int main(int argc, const char* argv[])
 		printf("%f", Q_is(A, B, C));
     }
     else {
-        printf("Error: Chisla vvedeni nepravilno\n");        
+        printf("Error: Vi vveli nepravilni simvoli\n");        
     }
 	
 }

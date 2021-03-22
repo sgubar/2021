@@ -7,8 +7,11 @@
 //
 
 #include <stdio.h>
+#include "tree.h"
 
 int main(int argc, const char * argv[]) {
+	ShortTree *tree = createShortTree();
+
 	// insert code here...
 	printf("Hello, World!\n");
 	return 0;
