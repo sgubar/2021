@@ -11,6 +11,7 @@
 
 static void destroyNode(ShortNode *aNode);
 static ShortNode *createShortNodeWithValue(short aValue);
+static ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete);
 
 ShortTree *createShortTree()
 {
@@ -108,12 +109,75 @@ ShortNode *findNodeWithValue(ShortTree *aTree, short aValue)
 	return theCurrentNode;
 }
 
-void deleteNodeWithValue(ShortTree *aTree, short aValue);
+void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 
-void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
+	// check input parameters
+	if (NULL == aTree || NULL == aTree->root) {
+		return ;
+	}
 
-void printTree(ShortTree *aTree);
-int countNodesWithTree(ShortTree *aTree);
+	ShortNode *current = aTree->root;
+	ShortNode *parent = aTree->root;
+
+	// find node for delete
+	while (aValue != current->value) {
+		parent = current;
+		if (aValue < current->value) {
+			current = current->leftChild;
+		} else {
+			current = current->rightChild;
+		}
+
+		if (NULL == current) {
+			return ;
+		}
+	}
+
+	//1) the found node is leaf node?
+	if (NULL == current->leftChild && NULL == current->rightChild) {
+		if (aTree->root == current) {
+			aTree->root = NULL;
+		} else if (parent->leftChild == current) {
+			parent->leftChild = NULL;
+		} else {
+			parent->rightChild = NULL;
+		}
+
+		aTree->count --;
+	} else if (NULL == current->rightChild) {
+		if (aTree->root == current) {
+			aTree->root = current->leftChild;
+		} else if (parent->leftChild == current) {
+			parent->leftChild = current->leftChild;
+		} else {
+			parent->rightChild = current->rightChild;
+		}
+	} else if (NULL == current->leftChild) {
+		if (aTree->root == current) {
+			aTree->root = current->rightChild;
+		} else if (parent->rightChild == current) {
+		 	parent->rightChild = current->rightChild;
+		} else {
+			parent->leftChild = current->leftChild;
+		}
+	} else {
+		ShortNode *successor = getSuccessor(aTree, current);
+		if (aTree->root == successor) {
+			aTree->root = NULL;
+		} else if (parent->leftChild == current) {
+			parent->leftChild = successor;
+		} else {
+			parent->rightChild = successor;
+		}
+	}
+
+	destroyNode(current);
+}
+
+//void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
+//
+//void printTree(ShortTree *aTree);
+//int countNodesWithTree(ShortTree *aTree);
 
 #pragma mark -
 void destroyNode(ShortNode *aNode)
@@ -139,4 +203,23 @@ ShortNode *createShortNodeWithValue(short aValue)
 	}
 	
 	return theNode;
+}
+
+ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete) {
+	ShortNode *successParent = toDelete;
+	ShortNode *successor = toDelete;
+	ShortNode *current = toDelete->rightChild;
+
+	while(NULL != current) {
+		successParent = successor;
+		successor = current;
+		current = current->leftChild;
+	}
+
+	if (successor != toDelete->rightChild) {
+		successParent->leftChild = successor->rightChild;
+		successor->rightChild = toDelete->rightChild;
+	}
+
+	return successor;
 }
