@@ -24,8 +24,7 @@ void printDoubleCharList(DoubleCharList* list);
 long countOfDouble(DoubleCharList* list);
 int addCharValueToDoubleCharList(DoubleCharList* list, char value);
 void printRevDoubleCharList(DoubleCharList* list);
-void clearDoubeCharlist(DoubleCharList* list);
-void reFreshDoubleCharList(DoubleCharList* list);
+DoubleCharList* ClearCharList(DoubleCharList* list);
 void reverseTextFile(FILE* fPointer);
 
 #endif

@@ -92,21 +92,6 @@ int addCharValueToDoubleCharList(DoubleCharList* list, char value) {
 	return 2;
 }
 
-void clearDoubeCharlist(DoubleCharList* list) {
-	if (NULL == list) {
-		return;
-	}
-
-	DoubleLinkedListElement* element = list->head;
-
-	while (NULL != element) {
-		DoubleLinkedListElement* tmp = element->next;
-		deleteDoubleListElement(element);
-		element = tmp;
-	}
-
-}
-
 void printRevDoubleCharList(DoubleCharList* list) {
 
 	if (NULL == list) {
@@ -129,12 +114,8 @@ void printRevDoubleCharList(DoubleCharList* list) {
 }
 
 
-void reFreshDoubleCharList(DoubleCharList* list) {
-	if (list == NULL) {
-		return;
-	}
-	clearDoubeCharlist(list);
-	list->head = NULL;
-	list->tail = NULL;
-
+DoubleCharList* ClearCharList(DoubleCharList* list) {
+	DoubleCharList* new_list = createDoubleCharList();
+	deleteDoubleCharList(list);
+	return  new_list;
 }

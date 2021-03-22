@@ -20,7 +20,7 @@ int main() {
 
 		if (sumb == '\n' || sumb == '\0') {
 			printRevDoubleCharList(sample);
-			reFreshDoubleCharList(sample);
+			sample = ClearCharList(sample); 
 		}
 
 	}
