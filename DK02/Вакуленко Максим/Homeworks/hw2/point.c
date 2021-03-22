@@ -17,6 +17,7 @@ void deletePoint(PtCord* p) {
 
 void printPoint(PtCord* p) {
 	if (NULL == p) {
+		printf("Error invalid point");
 		return;
 	}
 

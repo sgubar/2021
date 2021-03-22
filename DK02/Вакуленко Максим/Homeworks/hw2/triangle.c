@@ -2,24 +2,30 @@
 #include<stdlib.h>
 #include <math.h>
 Tria* createTriangleByPoints(PtCord* point1, PtCord* point2, PtCord* point3) {
+
+	if (TestOfLife(point1, point2, point3) == 0) {
+		deletePoint(point1);
+		deletePoint(point2);
+		deletePoint(point3);
+		return NULL;
+	}
 	Line* Line1_2 = createLineByPoints(point1, point2);
 	Line* Line2_3 = createLineByPoints(point2, point3);
 	Line* Line1_3 = createLineByPoints(point1, point3);
-	Tria* triangle = (Tria*)malloc(sizeof(Tria));
-	if (NULL == Line1_2 || NULL == Line2_3 || NULL == Line1_3) {
-		return NULL;
-	}
-	else if (TestOfLife(point1, point2, point3) == 0) {
-		return NULL;
-	}
-		triangle->line_1 = copyLine(Line1_2);
-		triangle->line_2 = copyLine(Line2_3);
-		triangle->line_3 = copyLine(Line1_3);
-		deledeLine(Line1_2);
-		deledeLine(Line2_3);
-		deledeLine(Line1_3);
-		return triangle;
 	
+	if (NULL == Line1_2 || NULL == Line2_3 || NULL == Line1_3) {
+		deledeLine(Line1_2);
+		deledeLine(Line1_3);
+		deledeLine(Line2_3);
+		return NULL;
+	
+	}
+	Tria* triangle = (Tria*)malloc(sizeof(Tria));
+		triangle->line_1 = Line1_2;
+		triangle->line_2 = Line2_3;
+		triangle->line_3 = Line1_3;
+		
+		return triangle;
 	
 }
 
@@ -72,10 +78,12 @@ void DrawTriangle() {
 }
 void deleteTria(Tria* l) {
 	if (l != NULL) {
-		deledeLine(l->line_1);
-		deledeLine(l->line_2);
-		deledeLine(l->line_3);		
+		deletePoint(l->line_1->A);
+		deletePoint(l->line_1->B);
+		deletePoint(l->line_2->B);
+
 	}
+	free(l);
 }
 
 Tria* copyTria(Tria* t) {
