@@ -30,7 +30,9 @@ void reallocate_figures(figures* arr_s, int new_size)
 	if (arr_s->size >= new_size)
 		return;
 	Square** buffer = (Square**)calloc(new_size, sizeof(Square*) * new_size);
-	memcpy(buffer, arr_s->square, new_size);
+	if (buffer == NULL)
+		return;
+	memcpy(buffer, arr_s->square, sizeof(Square*) * new_size);
 	free(arr_s->square);
 	arr_s->square = buffer;
 	arr_s->size = new_size;

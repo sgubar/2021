@@ -7,7 +7,7 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	figures* my_array = make_many_squares(size_arr);
+	figures* my_array = make_many_squares(1);
 
 	for (int i = 0; i < size_arr; i++)
 	{
