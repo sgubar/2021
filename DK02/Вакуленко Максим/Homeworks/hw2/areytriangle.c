@@ -39,17 +39,23 @@ void internalAddTria(AreyTria* l, Tria* p) {
 void deleteAreyTria(AreyTria* l) {
 	if (NULL != l) {
 
-		for (int i = 0; i < MAX_NUM && l->arrey[i] != NULL; i++) {
-			deleteTria(l->arrey[i]);
+		for (int i = 0; i < MAX_NUM; i++) {
+			if (l->arrey[i]!= NULL) {
+				//printf("delete el start %d\n", i);
+				deleteTria(l->arrey[i]);
+			//	printf("delete el done %d\n", i);
+			}
+				
 		}
-		free(l);
-	}
+			
+    }
+	free(l);
 }
 
 void PutTriangleInArey(AreyTria* ar, Tria* t) {
 	if (t == NULL) {
 		printf("Error Puting Triangle In Arey\n");
-		return 0;
+		return;
   }
 	internalAddTria(ar, t);
 }

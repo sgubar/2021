@@ -3,7 +3,7 @@
 //List element functions
 pListEl createListEl(int value)
 {
-	pListEl NewEl = (pListEl)malloc(sizeof(pListEl));
+	pListEl NewEl = (pListEl)malloc(sizeof(ListEl));
 	NewEl->value = value;
 	NewEl->next = NULL;
 	return NewEl;
@@ -28,7 +28,7 @@ void deleteListEl(pListEl listEl)
 //List functions
 pList createList(void)
 {
-	pList newList = (pList)malloc(sizeof(pList));
+	pList newList = (pList)malloc(sizeof(List));
 	if (newList != NULL)
 	{
 		newList->head = NULL;
@@ -89,6 +89,7 @@ int addIntToList(pList list, int value)
 	if (NULL == list->head)
 	{
 		list->head = El;
+		list->AmountOfEl++;
 		return 1;
 	}
 
@@ -116,6 +117,7 @@ int addElToList(pList list, pListEl El)
 	if (NULL == list->head)
 	{
 		list->head = El;
+		list->AmountOfEl++;
 		return 1;
 	}
 
@@ -167,7 +169,7 @@ void removeElFromList(pList list, int index)
 	{
 		return;
 	}
-	if (list->head = NULL)
+	if (list->head == NULL)
 	{
 		return;
 	}
@@ -195,14 +197,6 @@ pList createListWithXEl(int elements)
 	return list;
 }
 
-
-
-
-
-
-
-
-
 //My task functions
 int getNum(void)
 {
@@ -212,7 +206,7 @@ int getNum(void)
 	if (i == NULL)
 	{
 		printf("You've entered the wrong symbol,\nPlease, enter only numbers.\n");
-		return NULL;
+		return -1;
 	}
 	printf("You have just entered: %d\n", i);
 	return i;
@@ -245,7 +239,19 @@ void deleteFirstElLessThanValue(pList list, int index)
 		return;
 	}
 	pListEl currentEl = list->head;
-	for (; currentEl->value > index; currentEl = currentEl->next);
+	if (currentEl->value < index)
+	{
+		list->head = currentEl->next;
+		deleteListEl(currentEl);
+		return;
+	}
+
+	for (; currentEl->next->value > index; currentEl = currentEl->next);
+	if (currentEl->value == index)
+	{
+		printf("All the elements have the same values,\nHave nothing to delete.\n");
+		return;
+	}
 	pListEl toDelete = currentEl->next;
 	currentEl->next = toDelete->next;
 	deleteListEl(toDelete);
