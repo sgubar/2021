@@ -9,27 +9,26 @@ Rectangle* createRectangleByCoords(int x1, int y1, int x2, int y2, int x3, int y
 		rec->C = createPoint(x3, y3);
 		rec->D = createPoint(x4, y4);
 
-		if (CheckRectangle(rec) == 1) {
+		if (CheckRectangle(x1, y1, x2, y2, x3, y3, x4, y4) == 1) {
 			printf("Coords of rectangle is rorrect.\n");
 			return rec;
 		}
 		else {
+			deleteRectangle(rec);
 			return 0;
 		}
 	}
 }
 
-int CheckRectangle(Rectangle* rec) {
-	
+int CheckRectangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
 
-	long dX0 = rec->A->x - rec->C->x;
-	long dY0 = rec->A->y - rec->C->y;
-	long dX1 = rec->B->x - rec->D->x;
-	long dY1 = rec->B->y - rec->D->y;
+	int ACx = x3 - x1;
+	int ACy = y3 - y1;
+	int BDx = x4 - x2;
+	int BDy = y4 - y2;
 
-
-	int Diagonal1 = sqrt(dX0 * dX0 + dY0 * dY0);
-	int Diagonal2 = sqrt(dX1 * dX1 + dY1 * dY1);
+	int Diagonal1 = sqrt(ACx * ACx + ACy * ACy);
+	int Diagonal2 = sqrt(BDx * BDx + BDy * BDy);
 
 	if (Diagonal1 == Diagonal2) {
 		return 1;
