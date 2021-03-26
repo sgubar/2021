@@ -5,7 +5,7 @@
 int main()
 {
 
-    printf("Vas vitae programa z pidrahynky formylu: A!/|2+A*B| \n");
+    printf("Vas vitae programa z vuznachennam MAX, ta sortuvannam vid menshogo \n");
     printf("\n");
     printf("/|................Yvaga!!......................|\ \n");
     printf("|| Mojna vvodutu chisla vid 0 do 1000          || \n");
@@ -45,17 +45,22 @@ Yes: ;
     SortForHeadToMax(list);
     printIntList(list);
 
-   deleteIntListElement(element1);
+    deleteIntListElement(element1);
     deleteIntList(list);
 
-
+char tryAgain;
+    printf("\n Wanna try again? (y/n)");
+      scanf("%s", &tryAgain);
+      if(tryAgain=='y' || tryAgain=='Y') goto Yes;
+ }
+ else{
     Err: ;
         char tryAgain;
     printf("Ne korekto bulu vvedeni chusla!");
     printf("\n Wanna try again? (y/n)");
       scanf("%s", &tryAgain);
       if(tryAgain=='y' || tryAgain=='Y') goto Yes;
-
+     }
 
     return 0;
 
