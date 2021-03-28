@@ -81,5 +81,5 @@ void Print(const TNode* list)
     {
         printf("%d, ", list->value);
     }
-    printf("\b\b \n");
+    printf("\n");
 }
