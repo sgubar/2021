@@ -1,8 +1,6 @@
-Yana Boyko [❦], [28.03.21 13:25]
 #include "line.h"
 #include <stdlib.h>
 #include <math.h>
-
 
 Line *createLineByPoints(PtCord *p1, PtCord *p2)
 {
