@@ -3,7 +3,7 @@
 
 
 RectangleArray* createRectangleArray(long countOfArray) {
-	RectangleArray* array = (RectangleArray*)malloc(countOfArray, sizeof(RectangleArray));
+	RectangleArray* array = (RectangleArray*)malloc(sizeof(RectangleArray));
 
 	if (NULL != array) {
 		array->countz = (countOfArray > 0) ? countOfArray : 1;
@@ -17,12 +17,10 @@ void addRectangleToRectangleArray(RectangleArray* array, Rectangle* rec) {
 	if (NULL == array || NULL == rec) {
 		return;
 	}
-	int countm = countOfRectangles(array);
-	if (countm < array->countz) {
-		array->storage[countm] = rec;
-		countm++;
-	}
-	return countm;
+
+	long komirki = countOfRectangles(array);
+	setRectangleAtIndex(array, rec, (komirki));
+
 }
 
 int setRectangleAtIndex(RectangleArray* array, Rectangle* value, int index) {
@@ -73,21 +71,13 @@ void printRectangleArray(RectangleArray* array) {
 }
 
 long countOfRectangles(RectangleArray* array) {
-	if (NULL == array) {
+	 if (NULL == array) {
 		return 0;
-	}
-
-	int count = 0;
-	for (count = 0; count < array->countz; count++) {
-		if (array->storage[count] == NULL) { 
-			break;
-		}
-	}
-
-	return count;
+	 }
+	 return array->countz;
 }
 
-reallocateInternalStorage(RectangleArray* array, int requestedCount) {
+long reallocateInternalStorage(RectangleArray* array, int requestedCount) {
 	if (array->countz >= requestedCount) {
 		return array->countz;
 	}
@@ -107,8 +97,10 @@ reallocateInternalStorage(RectangleArray* array, int requestedCount) {
 void deleteRectangleArray(RectangleArray* array) {
 	if (NULL != array) {
 		if (NULL != array->storage) {
-			free(array->storage);
+			/*for (int i = 0; i < array->countz; i++) {*/
+				free(array->storage);
+			//}
 		}
-	}
 		free(array);
+		}
 	}

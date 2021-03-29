@@ -7,7 +7,7 @@
 
 typedef struct {
 	Rectangle** storage;
-	long countz;
+	int countz;
 } RectangleArray;
 
 RectangleArray* createRectangleArray(long countOfArray);
