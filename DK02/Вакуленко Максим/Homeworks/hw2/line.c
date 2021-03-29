@@ -7,8 +7,8 @@ Line* createLineByPoints(PtCord* p1, PtCord* p2) {
 	}
 	Line* l = (Line*)malloc(sizeof(Line));
 	if (NULL != l) {
-		l->A = p1;
-		l->B = p2;
+		l->A = copyPoint(p1);
+		l->B = copyPoint(p2);
 	}
 	return l;
 }
@@ -18,7 +18,7 @@ void deledeLine(Line* l) {
 		deletePoint(l->A);
 		deletePoint(l->B);
 	}
-//	free(l);
+	free(l);
 }
 
 void printLine(Line* l) {
