@@ -9,7 +9,7 @@ TNode* Push(TNode** list, int value)
     node->next = *list;
     node->prev = NULL;
  
-    if (*list)
+    if (*list != NULL)
     {
         (*list)->prev = node;
     }
@@ -21,12 +21,12 @@ TNode* Push(TNode** list, int value)
 
 void RemoveNode(TNode* node)
 {
-    if (node->prev)
+    if (node->prev !=NULL)
     {
         node->prev->next = node->next;
     }
  
-    if (node->next)
+    if (node->next !=NULL)
     {
         node->next->prev = node->prev;
     }
@@ -40,7 +40,7 @@ TNode* RemoveEvery(TNode** list, size_t number)
     TNode* node = *list;
     TNode* tmp;
  
-    while (node)
+    while (node !=NULL)
     {
         if (++counter == number)
         {
@@ -67,7 +67,7 @@ TNode* GetList(size_t count)
 {
     TNode* list = NULL;
  
-    while (count--)
+    while (count-- != NULL)
     {
         Push(&list, rand() % 90 + 10);
     }
@@ -81,5 +81,5 @@ void Print(const TNode* list)
     {
         printf("%d, ", list->value);
     }
-    printf("\b\b \n");
+    printf("\n");
 }
