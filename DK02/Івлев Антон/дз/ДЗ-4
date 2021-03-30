@@ -5,7 +5,7 @@ struct list
   int field; 
   struct list *next; 
   struct list *prev; 
-}
+};
 
 struct list * init(float a) 
 {
