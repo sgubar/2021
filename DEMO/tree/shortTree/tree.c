@@ -12,6 +12,7 @@
 static void destroyNode(ShortNode *aNode);
 static ShortNode *createShortNodeWithValue(short aValue);
 static ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete);
+static void print_short_node(ShortNode *node);
 
 ShortTree *createShortTree()
 {
@@ -169,6 +170,8 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 		} else {
 			parent->rightChild = successor;
 		}
+		current->leftChild = NULL;
+		current->rightChild = NULL;
 	}
 
 	destroyNode(current);
@@ -176,7 +179,18 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 
 //void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
 //
-//void printTree(ShortTree *aTree);
+void printTree(ShortTree *aTree) {
+	ShortNode* item = aTree->root;
+	print_short_node(item);
+}
+
+void print_short_node(ShortNode *node) {
+	if (node == NULL)
+		return;
+	print_short_node(node->leftChild);
+	printf("Элемент: %d\n", node->value);
+	print_short_node(node->rightChild);
+}
 //int countNodesWithTree(ShortTree *aTree);
 
 #pragma mark -
@@ -215,11 +229,14 @@ ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete) {
 		successor = current;
 		current = current->leftChild;
 	}
-
-	if (successor != toDelete->rightChild) {
-		successParent->leftChild = successor->rightChild;
-		successor->rightChild = toDelete->rightChild;
+//current = NULL;
+//successor = 35
+	if (successor != toDelete->rightChild) { // 35 != 39
+		successParent->leftChild = successor->rightChild; //39 -> NULL
+		successor->rightChild = toDelete->rightChild; //35->39
 	}
+
+	successor->leftChild = toDelete->leftChild;
 
 	return successor;
 }
