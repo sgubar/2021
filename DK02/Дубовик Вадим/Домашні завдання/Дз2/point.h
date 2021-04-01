@@ -14,5 +14,6 @@ PPoint makePoint(int x, int y);
 void deletePoint(PPoint p);
 void printPoint(PPoint p);
 PPoint getPoint(void);
-
+//num
+int getNum(void);
 #endif 

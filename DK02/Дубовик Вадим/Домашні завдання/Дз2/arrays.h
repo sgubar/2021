@@ -5,14 +5,16 @@
 
 typedef struct 
 {
-	PCircle c;
-	int amount;
+	PCircle *storage;
+	long amountOfCircles;
 } Array, * PArray;
 
-PArray makeArray(int amount1);
-void setCircleAtIndex(PArray s1, PCircle c1, int index);
-PCircle getCircleAtIndex(PArray s1, int index);
-void deleteArray(PArray s1);
-void printArrayCircles(PArray a);
-
+PArray makeArrayCircles(int amount);
+long setCircleAtIndex(PArray array, PCircle c, long index);
+PCircle getCircleAtIndex(PArray array, int index);
+void deleteArrayCircles(PArray array);
+void printArrayCircles(PArray array);
+long countOfArrays(PArray array);
+long realocateArrayOfCircles(int requestedCount, PArray array);
+long setCirclesAtArray(PArray array);
 #endif

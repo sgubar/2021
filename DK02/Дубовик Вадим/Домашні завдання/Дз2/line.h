@@ -2,7 +2,7 @@
 #include "point.h"
 #include <math.h>
 
-#define LINE_H
+ #define LINE_H
 #ifdef LINE_H
 
 typedef struct
