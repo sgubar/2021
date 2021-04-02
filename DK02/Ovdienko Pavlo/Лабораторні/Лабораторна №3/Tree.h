@@ -25,6 +25,5 @@ void insertDoubleValueToTree(DoubleTree* tree, double DDDdouble);
 void printTree(DoubleTree* tree);
 DoubleNode* findNodeWithValue(DoubleTree* tree, double DDDdouble);
 void deleteNodeWithTree(DoubleTree* tree, double DDDdouble);
-int countNodeInTree(DoubleTree* tree);
 
 #endif

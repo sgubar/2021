@@ -12,9 +12,7 @@ int main(int argc, const char* argv[]) {
 	insertDoubleValueToTree(rev, 0.35);
 	insertDoubleValueToTree(rev, 0.43);
 	printTree(rev);
-	printf("%d\n", countNodeInTree(rev));
-	deleteNodeWithTree(rev, 0.09);
+	deleteNodeWithTree(rev, 0.39);
 	printTree(rev);
-	printf("%d\n", countNodeInTree(rev));
 	destroyDoubleTree(rev);
 }

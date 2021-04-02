@@ -181,13 +181,6 @@ void printTree(DoubleTree* tree) {
 	printf("]\n");
 }
 
-int countNodeInTree(DoubleTree* tree) {
-	if (NULL == tree) {
-		return 0;
-	}
-	return tree->count;
-}
-
 //Functions for NODES
 
 DoubleNode* createDoubleNodeWithValue(double DDDdouble)
