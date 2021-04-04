@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct center {
+  double x1;
+  double y1;
+};
+struct circle {
+    double x2;
+    double y2;
+};
+
+int main() {
+    struct center c;
+    struct circle r;
+    printf("Центер круга \nВведите x1 : ");
+    scanf("%lf", &c.x1);
+    printf("Введите y1 : ");
+    scanf("%lf", &c.y1);
+    printf("Точка лежащая на окружности \nВведите x2 : ");
+    scanf("%lf", &r.x2);
+    printf("Введите y2 : ");
+    scanf("%lf", &r.y2);
+    float q=sqrtl((r.x2-c.x1)+(r.y2-c.y1));
+    printf("Радиус: %5f \n", q);
+    printf("Площадь: %5f \n", q*q*3.14);
+    printf("Длина окружности: %5f \n", 6.28*q);
+    return 0;
+}
