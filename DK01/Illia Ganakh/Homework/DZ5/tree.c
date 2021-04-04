@@ -1,22 +1,12 @@
-//
-//  tree.c
-//  demoTree2
-//
-//  Created by Slava Gubar on 4/25/17.
-//  Copyright © 2017 Slava Gubar. All rights reserved.
-//
-
 #include "tree.h"
 #include <stdlib.h>
 
-static void destroyNode(ShortNode *aNode);
-static ShortNode *createShortNodeWithValue(short aValue);
-static ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete);
-static void print_short_node(ShortNode *node);
+static void destroyNode(DoubleNode *aNode);
+static DoubleNode *createDoubleNodeWithValue(double aValue);
+static DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete);
 
-ShortTree *createShortTree()
-{
-	ShortTree *theTree = (ShortTree *)malloc(sizeof(ShortTree));
+DoubleTree *createDoubleTree() {
+	DoubleTree *theTree = (DoubleTree *)malloc(sizeof(DoubleTree));
 	
 	if (NULL != theTree)
 	{
@@ -27,8 +17,7 @@ ShortTree *createShortTree()
 	return theTree;
 }
 
-void destroyShortTree(ShortTree *aTree)
-{
+void destroyDoubleTree(DoubleTree *aTree) {
 	if (NULL != aTree)
 	{
 		destroyNode(aTree->root);
@@ -36,14 +25,13 @@ void destroyShortTree(ShortTree *aTree)
 	}
 }
 
-void insertShortValueToTree(ShortTree *aTree, short aValue)
-{
+void insertDoubleValueToTree(DoubleTree *aTree, double aValue) {
 	if (NULL == aTree)
 	{
 		return;
 	}
 
-	ShortNode *theNode = createShortNodeWithValue(aValue);
+	DoubleNode *theNode = createDoubleNodeWithValue(aValue);
 	if (NULL == theNode)
 	{
 		return;
@@ -56,8 +44,8 @@ void insertShortValueToTree(ShortTree *aTree, short aValue)
 	}
 	else
 	{
-		ShortNode *theCurrent = aTree->root;
-		ShortNode *theParent = NULL;
+		DoubleNode *theCurrent = aTree->root;
+		DoubleNode *theParent = NULL;
 
 		while (1)
 		{
@@ -87,14 +75,13 @@ void insertShortValueToTree(ShortTree *aTree, short aValue)
 	}
 }
 
-ShortNode *findNodeWithValue(ShortTree *aTree, short aValue)
-{
-	ShortNode *theCurrentNode = NULL;
+DoubleNode *findNodeWithValue(DoubleTree *aTree, double aValue) {
+	DoubleNode *theCurrentNode = NULL;
 	
 	if (NULL != aTree && NULL != aTree->root)
 	{
-		ShortNode *theCurrentNode = aTree->root; //<! - start from root
-		while (aValue != theCurrentNode->value) //<! - walk through the tree
+		DoubleNode *theCurrentNode = aTree->root;
+		while (aValue != theCurrentNode->value)
 		{
 			theCurrentNode = (aValue < theCurrentNode->value)
 						? theCurrentNode->leftChild
@@ -110,17 +97,16 @@ ShortNode *findNodeWithValue(ShortTree *aTree, short aValue)
 	return theCurrentNode;
 }
 
-void deleteNodeWithValue(ShortTree *aTree, short aValue) {
+void deleteNodeWithValue(DoubleTree *aTree, double aValue) {
 
-	// check input parameters
+
 	if (NULL == aTree || NULL == aTree->root) {
 		return ;
 	}
 
-	ShortNode *current = aTree->root;
-	ShortNode *parent = aTree->root;
+	DoubleNode *current = aTree->root;
+	DoubleNode *parent = aTree->root;
 
-	// find node for delete
 	while (aValue != current->value) {
 		parent = current;
 		if (aValue < current->value) {
@@ -134,7 +120,6 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 		}
 	}
 
-	//1) the found node is leaf node?
 	if (NULL == current->leftChild && NULL == current->rightChild) {
 		if (aTree->root == current) {
 			aTree->root = NULL;
@@ -162,7 +147,7 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 			parent->leftChild = current->leftChild;
 		}
 	} else {
-		ShortNode *successor = getSuccessor(aTree, current);
+		DoubleNode *successor = getSuccessor(aTree, current);
 		if (aTree->root == successor) {
 			aTree->root = NULL;
 		} else if (parent->leftChild == current) {
@@ -170,32 +155,22 @@ void deleteNodeWithValue(ShortTree *aTree, short aValue) {
 		} else {
 			parent->rightChild = successor;
 		}
-		current->leftChild = NULL;
-		current->rightChild = NULL;
 	}
 
 	destroyNode(current);
 }
 
-//void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
-//
-void printTree(ShortTree *aTree) {
-	ShortNode* item = aTree->root;
-	print_short_node(item);
+void printTree(DoubleNode *root) {
+    if(root == NULL) {
+    return;
+    }
+
+    printTree(root->leftChild);
+    printTree(root->rightChild);
+    printf("%.2lf ", root->value);
 }
 
-void print_short_node(ShortNode *node) {
-	if (node == NULL)
-		return;
-	print_short_node(node->leftChild);
-	printf("Элемент: %d\n", node->value);
-	print_short_node(node->rightChild);
-}
-//int countNodesWithTree(ShortTree *aTree);
-
-#pragma mark -
-void destroyNode(ShortNode *aNode)
-{
+void destroyNode(DoubleNode *aNode) {
 	if (NULL != aNode)
 	{
 		destroyNode(aNode->leftChild);
@@ -205,9 +180,8 @@ void destroyNode(ShortNode *aNode)
 	}
 }
 
-ShortNode *createShortNodeWithValue(short aValue)
-{
-	ShortNode *theNode = (ShortNode *)malloc(sizeof(ShortNode));
+DoubleNode *createDoubleNodeWithValue(double aValue) {
+	DoubleNode *theNode = (DoubleNode *)malloc(sizeof(DoubleNode));
 	
 	if (NULL != theNode)
 	{
@@ -219,24 +193,21 @@ ShortNode *createShortNodeWithValue(short aValue)
 	return theNode;
 }
 
-ShortNode *getSuccessor(ShortTree *tree, ShortNode *toDelete) {
-	ShortNode *successParent = toDelete;
-	ShortNode *successor = toDelete;
-	ShortNode *current = toDelete->rightChild;
+DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete) {
+	DoubleNode *successParent = toDelete;
+	DoubleNode *successor = toDelete;
+	DoubleNode *current = toDelete->rightChild;
 
 	while(NULL != current) {
 		successParent = successor;
 		successor = current;
 		current = current->leftChild;
 	}
-//current = NULL;
-//successor = 35
-	if (successor != toDelete->rightChild) { // 35 != 39
-		successParent->leftChild = successor->rightChild; //39 -> NULL
-		successor->rightChild = toDelete->rightChild; //35->39
-	}
 
-	successor->leftChild = toDelete->leftChild;
+	if (successor != toDelete->rightChild) {
+		successParent->leftChild = successor->rightChild;
+		successor->rightChild = toDelete->rightChild;
+	}
 
 	return successor;
 }

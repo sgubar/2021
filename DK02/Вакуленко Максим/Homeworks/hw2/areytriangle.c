@@ -32,7 +32,7 @@ void internalAddTria(AreyTria* l, Tria* p) {
 	}
 	int count = countArey(l);
 	if (count < MAX_NUM) {
-		l->arrey[count] = p;
+		l->arrey[count] = copyTria(p);
 	}
 }
 

@@ -11,7 +11,6 @@ typedef struct {
 Tria* createTriangleByPoints(PtCord* point1, PtCord* point2, PtCord* point3);
 int TestOfLife(PtCord* point1, PtCord* point2, PtCord* point3);
 void deleteTria(Tria* l);
-int TestOfLife(Line* ln1, Line* ln2, Line* ln3);
 double PerimeterOfTriangle(Tria* Per);
 double SquareOfTriangle(Tria* Per);
 

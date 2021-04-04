@@ -4,9 +4,6 @@
 Tria* createTriangleByPoints(PtCord* point1, PtCord* point2, PtCord* point3) {
 
 	if (TestOfLife(point1, point2, point3) == 0) {
-		deletePoint(point1);
-		deletePoint(point2);
-		deletePoint(point3);
 		return NULL;
 	}
 	Line* Line1_2 = createLineByPoints(point1, point2);
@@ -14,9 +11,11 @@ Tria* createTriangleByPoints(PtCord* point1, PtCord* point2, PtCord* point3) {
 	Line* Line1_3 = createLineByPoints(point1, point3);
 	
 	if (NULL == Line1_2 || NULL == Line2_3 || NULL == Line1_3) {
+	
 		deledeLine(Line1_2);
-		deledeLine(Line1_3);
-		deledeLine(Line2_3);
+		deletePoint(Line1_3->B);
+		free(Line1_3);
+		free(Line2_3);
 		return NULL;
 	
 	}
@@ -88,7 +87,7 @@ void deleteTria(Tria* l) {
 
 Tria* copyTria(Tria* t) {
 	if (t == NULL) {
-		return;
+		return NULL;
 	}
 	Tria* Copy = createTriangleByPoints(copyPoint(t->line_1->A), copyPoint(t->line_2->A), copyPoint(t->line_2->B));
 	return Copy;
