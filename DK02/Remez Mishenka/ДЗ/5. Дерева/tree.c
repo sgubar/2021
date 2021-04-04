@@ -1,7 +1,7 @@
 #include "tree.h"
 
 
-void include_item_im_tree(tree* tree, char value)
+void include_item_im_tree(tree* tree, float value)
 {
 	if (tree == NULL)
 		return;
@@ -44,7 +44,7 @@ void include_item_im_tree(tree* tree, char value)
 	return;
 }
 
-void delete_item_from_tree(tree* tree, char value)
+void delete_item_from_tree(tree* tree, float value)
 {
 	// check input parameters
 	if (NULL == tree || NULL == tree->source_item) {
@@ -125,7 +125,7 @@ void delete_item_from_tree(tree* tree, char value)
 
 
 
-tree_item* find_tree_item(tree* tree, char value)
+tree_item* find_tree_item(tree* tree, float value)
 {
 	tree_item* item = NULL;
 
@@ -187,16 +187,16 @@ tree* make_tree(void)
 	return derevo;
 }
 
-void delete_tree(tree* char_tree)
+void delete_tree(tree* float_tree)
 {
-	if (char_tree != NULL)
+	if (float_tree != NULL)
 	{
-		destroy_item(char_tree->source_item);
-		free(char_tree);
+		destroy_item(float_tree->source_item);
+		free(float_tree);
 	}
 }
 
-static tree_item* make_item_for_tree(char value)
+static tree_item* make_item_for_tree(float value)
 {
 	tree_item* item = (tree_item*)malloc(sizeof(tree_item));
 	item->left = NULL;
@@ -217,7 +217,7 @@ static void into_item(tree_item* item)
 	if (item == NULL)
 		return;
 	into_item(item->left);
-	printf("Ёлемент: %c\n", item->value);
+	printf("Ёлемент: %.2f\n", item->value);
 	into_item(item->right);
 }
 

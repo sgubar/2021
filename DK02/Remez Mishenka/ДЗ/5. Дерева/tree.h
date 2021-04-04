@@ -12,7 +12,7 @@ typedef struct t_item tree_item;
 
 struct t_item
 {
-	char value;
+	float value;
 	tree_item* left;
 	tree_item* right;
 
@@ -25,18 +25,18 @@ typedef struct
 
 }tree;
 
-void include_item_im_tree(tree_item* tree, char value);
+void include_item_im_tree(tree_item* tree, float value);
 void destroy_item(tree_item* item);
 
 tree* make_tree(void);
-void delete_tree(tree* char_tree);
+void delete_tree(tree* float_tree);
 
-tree_item* find_tree_item(tree* tree, char value);
+tree_item* find_tree_item(tree* tree, float value);
 void print_tree(tree* tree);
 
-void delete_item_from_tree(tree* tree, char value);
+void delete_item_from_tree(tree* tree, float value);
 
-static tree_item* make_item_for_tree(char value);
+static tree_item* make_item_for_tree(float value);
 static void into_item(tree_item* item);
 
 static tree_item* getSuccessor(tree* tree, tree_item* toDelete);
