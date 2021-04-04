@@ -13,6 +13,7 @@ int main(int argc, const char* argv[]) {
 	insertDoubleValueToTree(rev, 0.43);
 	printTree(rev);
 	deleteNodeWithTree(rev, 0.39);
+	findNodeWithValue(rev, 0.35);
 	printTree(rev);
 	destroyDoubleTree(rev);
 }

@@ -82,7 +82,7 @@ DoubleNode* findNodeWithValue(DoubleTree* tree, double DDDdouble)
 
 	if (NULL != tree && NULL != tree->root)
 	{
-		DoubleNode* theCurrentNode = tree->root; 
+		theCurrentNode = tree->root;
 		while (DDDdouble != theCurrentNode->value)
 		{
 			theCurrentNode = (DDDdouble < theCurrentNode->value)
@@ -95,7 +95,12 @@ DoubleNode* findNodeWithValue(DoubleTree* tree, double DDDdouble)
 			}
 		}
 	}
-	return theCurrentNode;
+	if (theCurrentNode == NULL) {
+		printf("There is no element in this tree.\n");
+	}
+	else {
+		return printf("%f\n", theCurrentNode->value);
+	}
 }
 
 void deleteNodeWithTree(DoubleTree* tree, double DDDdouble) {
