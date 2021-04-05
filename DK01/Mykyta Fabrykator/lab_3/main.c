@@ -10,7 +10,7 @@ int main(){
 	node* root = create(root, 0);
 	float a;
 	int i=1;
-	printf("Введите 10 чисел:\n");
+	printf("Введите 10 чисел:(после ввода числа - ENTER)\n");
 	setlocale(LC_ALL, "ENG");
 	while(i<=10){
 		scanf("%f", &a);
