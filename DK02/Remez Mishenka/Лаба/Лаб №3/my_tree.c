@@ -18,7 +18,7 @@ int main(void)
 
 	printf("\n");
 
-	delete_item_from_tree(derevce, 'L');
+	delete_item_from_tree(derevce, 'H');
 
 	print_tree(derevce);
 
