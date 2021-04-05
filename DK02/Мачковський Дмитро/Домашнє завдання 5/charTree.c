@@ -85,7 +85,7 @@ CharNode* findNodeWithValue(CharTree* aTree, char aValue)
 
 	if (NULL != aTree && NULL != aTree->root)
 	{
-		CharNode* theCurrentNode = aTree->root;
+		theCurrentNode = aTree->root;
 		while (aValue != theCurrentNode->value)
 		{
 			theCurrentNode = (aValue < theCurrentNode->value)
