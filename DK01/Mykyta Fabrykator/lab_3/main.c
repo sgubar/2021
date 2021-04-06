@@ -10,7 +10,7 @@ int main(){
 	node* root = create(root, 0);
 	float a;
 	int i=1;
-	printf("Введите 10 чисел(после ввода числа нажимаем enter):\n");
+	printf("Введите 10 чисел:(после ввода числа - ENTER)\n");
 	setlocale(LC_ALL, "ENG");
 	while(i<=10){
 		scanf("%f", &a);
@@ -18,6 +18,13 @@ int main(){
 		i++;
 	}
 	
+	inorder(root);
+	float t;
+	setlocale(LC_ALL, "Rus");
+	printf("\nВведите элемент который хотите удалить: ");
+	setlocale(LC_ALL, "ENG");
+	scanf("%f", &t);
+	delete (root, t);
 	inorder(root);
 	freemem(root);
 	return 0;
