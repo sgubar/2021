@@ -169,11 +169,14 @@ void deleteNodeWithTree(DoubleTree* tree, double DDDdouble) {
 		else if (parent->leftChild == current) {
 			parent->leftChild = successor;
 		}
-		else {
+		else if (parent->rightChild == current) {
 			parent->rightChild = successor;
 		}
-		current->leftChild = NULL;
-		current->rightChild = NULL;
+		else {
+			tree->root = successor;
+				current->leftChild = NULL;
+			current->rightChild = NULL;
+		}
 	}
 
 	destroyNode(current);
