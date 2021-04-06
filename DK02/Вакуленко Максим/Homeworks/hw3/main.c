@@ -21,15 +21,16 @@ int main() {
 
 	Tria* test_3 = getTriaAtArey(One, 6);
 	IndexTriaInsert(One, 2, test_3);
-
+	
 
 	printAreyTria(One);
 
 	deleteAreyTria(One);
 
-	deletePoint(test_0);
-	deletePoint(test_1);
-	deletePoint(test_2);
+    deleteTria(test_0);
+	deleteTria(test_1);
+	deleteTria(test_2);
+	deleteTria(test_3);
 
 	deletePoint(b);
 	deletePoint(c);
