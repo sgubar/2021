@@ -85,8 +85,8 @@ DoubleNode *findNodeWithValue(DoubleTree *dTree, double dValue)
 	
 	if (NULL != dTree && NULL != dTree->root)
 	{
-		DoubleNode *theCurrentNode = dTree->root; //<! - start from root
-		while (dValue != theCurrentNode->value) //<! - walk through the tree
+		DoubleNode *theCurrentNode = dTree->root; 
+		while (dValue != theCurrentNode->value) 
 		{
 			theCurrentNode = (dValue < theCurrentNode->value)
 						? theCurrentNode->leftChild
@@ -104,7 +104,7 @@ DoubleNode *findNodeWithValue(DoubleTree *dTree, double dValue)
 
 void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 
-	// check input parameters
+	
 	if (NULL == dTree || NULL == dTree->root) {
 		return ;
 	}
@@ -112,7 +112,6 @@ void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 	DoubleNode *current = dTree->root;
 	DoubleNode *parent = dTree->root;
 
-	// find node for delete
 	while (dValue != current->value) {
 		parent = current;
 		if (dValue < current->value) {
@@ -126,7 +125,7 @@ void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 		}
 	}
 
-	//1) the found node is leaf node?
+	
 	if (NULL == current->leftChild && NULL == current->rightChild) {
 		if (dTree->root == current) {
 			dTree->root = NULL;
@@ -169,8 +168,7 @@ void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 	destroyNode(current);
 }
 
-//void mergeTrees(ShortTree *aTreeDst, ShortTree *aTreeSrc);
-//
+
 void printTree(DoubleTree *dTree) {
 	DoubleNode* item = dTree->root;
 	print_double_node(item);
@@ -183,7 +181,7 @@ void print_double_node(DoubleNode *node) {
 	printf("Элемент: %d\n", node->value);
 	print_double_node(node->rightChild);
 }
-//int countNodesWithTree(ShortTree *aTree);
+
 
 #pragma mark -
 void destroyNode(DoubleNode *dNode)
