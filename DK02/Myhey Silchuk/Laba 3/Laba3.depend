@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1618073793 source:c:\users\adadmin\desktop\laba 3\laba 3\laba3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1618077036 source:c:\users\adadmin\desktop\laba 3\laba 3\laba3\tree.c
+	"tree.h"
+	<stdio.h>
+
+1618077038 c:\users\adadmin\desktop\laba 3\laba 3\laba3\tree.h
+	<stdio.h>
+
