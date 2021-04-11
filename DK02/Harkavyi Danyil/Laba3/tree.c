@@ -85,7 +85,7 @@ IntNode* findNodeWithValue(IntTree* aTree, int aValue)
 
 	if (NULL != aTree && NULL != aTree->root)
 	{
-		IntNode* theCurrentNode = aTree->root; 
+		 theCurrentNode = aTree->root; 
 		while (aValue != theCurrentNode->value) 
 		{
 			theCurrentNode = (aValue < theCurrentNode->value)
