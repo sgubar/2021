@@ -1,61 +1,61 @@
 #include "tree.h"
 #include <stdlib.h>
 
-static void destroyNode(DoubleNode *dNode);
-static DoubleNode *createDoubleNodeWithValue(double dValue);
+static void delateNode(DoubleNode *aNode);
+static DoubleNode *createDoubleNodeWithSumbol(double aSumbol);
 static DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete);
 static void print_double_node(DoubleNode *node);
 
 DoubleTree *createDoubleTree()
 {
-	DoubleTree *theTree = (DoubleTree *)malloc(sizeof(ShortTree));
-	
+	DoubleTree *theTree = (DoubleTree *)malloc(sizeof(DoubleTree));
+
 	if (NULL != theTree)
 	{
 		theTree->root = NULL;
 		theTree->count = 0;
 	}
-	
+
 	return theTree;
 }
 
-void destroyDoubleTree(DoubleTree *dTree)
+void delateDoubleTree(DoubleTree *aTree)
 {
-	if (NULL != dTree)
+	if (NULL != aTree)
 	{
-		destroyNode(dTree->root);
-		free(dTree);
+		delateNode(aTree->root);
+		free(aTree);
 	}
 }
 
-void insertDoubleValueToTree(DoubleTree *dTree, double dValue)
+void insertDoubleSumbolToTree(DoubleTree *aTree, double aSumbol)
 {
-	if (NULL == dTree)
+	if (NULL == aTree)
 	{
 		return;
 	}
 
-	DoubleNode *theNode = createDoubleNodeWithValue(dValue);
+	DoubleNode *theNode = createDoubleNodeWithSumbol(aSumbol);
 	if (NULL == theNode)
 	{
 		return;
 	}
-	
-	if (NULL == dTree->root)
+
+	if (NULL == aTree->root)
 	{
-		dTree->root = theNode;
-		dTree->count ++;
+		aTree->root = theNode;
+		aTree->count ++;
 	}
 	else
 	{
-		DoubleNode *theCurrent = dTree->root;
+		DoubleNode *theCurrent = aTree->root;
 		DoubleNode *theParent = NULL;
 
 		while (1)
 		{
 			theParent = theCurrent;
-		
-			if (dValue < theCurrent->value)
+
+			if (aSumbol < theCurrent->sumbol)
 			{
 				theCurrent = theCurrent->leftChild;
 				if (NULL == theCurrent)
@@ -74,47 +74,48 @@ void insertDoubleValueToTree(DoubleTree *dTree, double dValue)
 				}
 			}
 		}
-	
-		dTree->count ++;
+
+		aTree->count ++;
 	}
 }
 
-DoubleNode *findNodeWithValue(DoubleTree *dTree, double dValue)
+DoubleNode *findNodeWithSumbol(DoubleTree *aTree, double aSumbol)
 {
 	DoubleNode *theCurrentNode = NULL;
-	
-	if (NULL != dTree && NULL != dTree->root)
+
+	if (NULL != aTree && NULL != aTree->root)
 	{
-		DoubleNode *theCurrentNode = dTree->root; 
-		while (dValue != theCurrentNode->value) 
+		DoubleNode *theCurrentNode = aTree->root;
+		while (aSumbol != theCurrentNode->sumbol)
 		{
-			theCurrentNode = (dValue < theCurrentNode->value)
+			theCurrentNode = (aSumbol < theCurrentNode->sumbol)
 						? theCurrentNode->leftChild
 						: theCurrentNode->rightChild;
-		
+
 			if (NULL == theCurrentNode)
 			{
 				break;
 			}
 		}
 	}
-	
+
 	return theCurrentNode;
 }
 
-void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
+void deleteNodeWithSumbol(DoubleTree *aTree, double aSumbol) {
 
-	
-	if (NULL == dTree || NULL == dTree->root) {
+
+	if (NULL == aTree || NULL == aTree->root) {
 		return ;
 	}
 
-	DoubleNode *current = dTree->root;
-	DoubleNode *parent = dTree->root;
+	DoubleNode *current = aTree->root;
+	DoubleNode *parent = aTree->root;
 
-	while (dValue != current->value) {
+
+	while (aSumbol!= current->sumbol) {
 		parent = current;
-		if (dValue < current->value) {
+		if (aSumbol < current->sumbol) {
 			current = current->leftChild;
 		} else {
 			current = current->rightChild;
@@ -125,37 +126,37 @@ void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 		}
 	}
 
-	
+
 	if (NULL == current->leftChild && NULL == current->rightChild) {
-		if (dTree->root == current) {
-			dTree->root = NULL;
+		if (aTree->root == current) {
+			aTree->root = NULL;
 		} else if (parent->leftChild == current) {
 			parent->leftChild = NULL;
 		} else {
 			parent->rightChild = NULL;
 		}
 
-		dTree->count --;
+		aTree->count --;
 	} else if (NULL == current->rightChild) {
-		if (dTree->root == current) {
-			dTree->root = current->leftChild;
+		if (aTree->root == current) {
+			aTree->root = current->leftChild;
 		} else if (parent->leftChild == current) {
 			parent->leftChild = current->leftChild;
 		} else {
 			parent->rightChild = current->rightChild;
 		}
 	} else if (NULL == current->leftChild) {
-		if (dTree->root == current) {
-			dTree->root = current->rightChild;
+		if (aTree->root == current) {
+			aTree->root = current->rightChild;
 		} else if (parent->rightChild == current) {
 		 	parent->rightChild = current->rightChild;
 		} else {
 			parent->leftChild = current->leftChild;
 		}
 	} else {
-		DoubleNode *successor = getSuccessor(dTree, current);
-		if (dTree->root == successor) {
-			dTree->root = NULL;
+		DoubleNode *successor = getSuccessor(aTree, current);
+		if (aTree->root == successor) {
+			aTree->root = NULL;
 		} else if (parent->leftChild == current) {
 			parent->leftChild = successor;
 		} else {
@@ -165,47 +166,48 @@ void deleteNodeWithValue(DoubleTree *dTree, double dValue) {
 		current->rightChild = NULL;
 	}
 
-	destroyNode(current);
+	delateNode(current);
 }
 
 
-void printTree(DoubleTree *dTree) {
-	DoubleNode* item = dTree->root;
+void printTree(DoubleTree *aTree) {
+	DoubleNode* item = aTree->root;
 	print_double_node(item);
 }
 
 void print_double_node(DoubleNode *node) {
 	if (node == NULL)
 		return;
+    printf("Element: %.0f \n", node->sumbol);
 	print_double_node(node->leftChild);
-	printf("Элемент: %d\n", node->value);
 	print_double_node(node->rightChild);
+
 }
 
 
-#pragma mark -
-void destroyNode(DoubleNode *dNode)
+
+void delateNode(DoubleNode *aNode)
 {
-	if (NULL != dNode)
+	if (NULL != aNode)
 	{
-		destroyNode(dNode->leftChild);
-		destroyNode(dNode->rightChild);
-	
-		free(dNode);
+		delateNode(aNode->leftChild);
+		delateNode(aNode->rightChild);
+
+		free(aNode);
 	}
 }
 
-DoubleNode *createDoubleNodeWithValue(double dValue)
+DoubleNode *createDoubleNodeWithSumbol(double aSumbol)
 {
 	DoubleNode *theNode = (DoubleNode *)malloc(sizeof(DoubleNode));
-	
+
 	if (NULL != theNode)
 	{
 		theNode->leftChild = NULL;
 		theNode->rightChild = NULL;
-		theNode->value = dValue;
+		theNode->sumbol = aSumbol;
 	}
-	
+
 	return theNode;
 }
 
@@ -220,9 +222,9 @@ DoubleNode *getSuccessor(DoubleTree *tree, DoubleNode *toDelete) {
 		current = current->leftChild;
 	}
 
-	if (successor != toDelete->rightChild) { 
-		successParent->leftChild = successor->rightChild; 
-		successor->rightChild = toDelete->rightChild; 
+	if (successor != toDelete->rightChild) {
+		successParent->leftChild = successor->rightChild;
+		successor->rightChild = toDelete->rightChild;
 	}
 
 	successor->leftChild = toDelete->leftChild;
