@@ -3,30 +3,31 @@
 
 #include <stdio.h>
 
-typedef double __tagNode;
+typedef struct tagNode
 {
-	double value;
-	double __tagNode *leftChild;
-	double __tagNode *rightChild;
+	double sumbol;
+	struct tagNode *leftChild;
+	struct tagNode *rightChild;
 } DoubleNode;
 
-typedef double __tagTree
+typedef struct tagTree
 {
 	DoubleNode *root;
+
 	int count;
 } DoubleTree;
 
 
 DoubleTree *createDoubleTree();
-void destroyDoubleTree(DoubleTree *dTree);
+void delateDoubleTree(DoubleTree *aTree);
 
-void insertDoubleValueToTree(DoubleTree *dTree, double dValue);
-DoubleNode *findNodeWithValue(DoubleTree *dTree, double dValue);
-void deleteNodeWithValue(DoubleTree *dTree, double dValue);
+void insertDoubleSumbolToTree(DoubleTree *aTree, double aSumbol);
+DoubleNode *findNodeWithSumbol(DoubleTree *aTree, double aSumbol);
+void deleteNodeWithSumbol(DoubleTree *aTree, double aSumbol);
 
-void mergeTrees(DoubleTree *dTreeDst, DoubleTree *dTreeSrc);
 
-void printTree(DoubleTree *dTree);
-int countNodesWithTree(DoubleTree *dTree);
+
+void printTree(DoubleTree *aTree);
+
 
 #endif
