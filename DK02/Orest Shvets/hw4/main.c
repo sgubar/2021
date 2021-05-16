@@ -2,9 +2,9 @@
 int main(void)
 {
 	pIntList list = createIntList();
-	addIntValueToIntList(list, 23);
-	addIntValueToIntList(list, 72);
-	addIntValueToIntList(list, 28);
+	addIntValueToIntList(list, 19);
+	addIntValueToIntList(list, 74);
+	addIntValueToIntList(list, 36);
 
 	printIntList(list);
 
