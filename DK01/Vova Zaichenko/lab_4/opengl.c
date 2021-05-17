@@ -22,20 +22,20 @@ void ZoomKeys(int key, int x, int y) {
 		break;
 	case GLUT_KEY_DOWN:
 		ud = ud - 0.1;
-		break;  
+		break;
 	}
 }
-void Graf() { 
+void Graf() {
 	int a = 1;
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Фон чорний 
-	
-// Малювання серії відрізків, що є графіком функції
+
+	// Малювання декількох відрізків(графік функції)
 	glBegin(GL_LINE_STRIP); // Кожна пара вершини задає відрізок
 	glColor3f(1.0f, 0.0f, 1.0f); // Рожевий колір
 	for (double t = -M_PI; t <= M_PI; t += 0.01) {
-		float y = ((a*sqrt(2)*cos(t)*sin(t))/(1+sin(t)*sin(t))/ M_PI) ;
-		float x = ((a * sqrt(2) * cos(t) ) / (1 + sin(t) * sin(t)) / M_PI) ;
-		glVertex2f(x/zoom + lr, y/zoom + ud);
+		float y = ((a * sqrt(2) * cos(t) * sin(t)) / (1 + sin(t) * sin(t)) / M_PI);
+		float x = ((a * sqrt(2) * cos(t)) / (1 + sin(t) * sin(t)) / M_PI);
+		glVertex2f(x / zoom + lr, y / zoom + ud);
 	}
 	glEnd();
 }
@@ -43,37 +43,37 @@ void LineX() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Фон чорний 
 	glBegin(GL_LINES); // Кожна пара вершини задає відрізок
 	glColor3f(0.0f, 1.0f, 0.0f); // зелений колір
-		glVertex2f(-1, 0);
-		glVertex2f(1, 0);
+	glVertex2f(-1, 0);
+	glVertex2f(1, 0);
 	glEnd();
 }
-void LineXY(double x ) {
+void LineXY(double x) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Фон чорний 
 	glBegin(GL_LINES); // Кожна пара вершини задає відрізок
 	glColor3f(0.0f, 1.0f, 0.0f); // Зелений колір
 	glVertex2f(x, 0.025);
-	glVertex2f(x,-0.025);
+	glVertex2f(x, -0.025);
 	glEnd();
 }
 void LineY() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Фон чорний 
 	glBegin(GL_LINES); // Кожна пара вершини задає відрізок
 	glColor3f(0.0f, 1.0f, 0.0f); // Зелений колір
-	glVertex2f(0,-1 );
-	glVertex2f(0,1 );
+	glVertex2f(0, -1);
+	glVertex2f(0, 1);
 	glEnd();
 }
 void LineYX(double y) {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Фон чорний
 	glBegin(GL_LINES); // Кожна пара вершини задає відрізок
 	glColor3f(0.0f, 1.0f, 0.0f); // Зелений колір
-	glVertex2f( 0.025, y);
+	glVertex2f(0.025, y);
 	glVertex2f(-0.025, y);
 	glEnd();
 }
 void display()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Graf();
 	LineX();
 	for (double x = -1; x <= 1; x += 0.1) {
@@ -86,8 +86,8 @@ void display()
 	glutSwapBuffers();
 }
 void Timer(int value) {
-	glutPostRedisplay(); 
-	glutTimerFunc(30, Timer, 0); 
+	glutPostRedisplay();
+	glutTimerFunc(30, Timer, 0);
 }
 int main(int argc, char* argv[])
 {
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 	glutSpecialFunc(ZoomKeys);
 	glutDisplayFunc(display);// Реєстрація функції зворотного
 	glutTimerFunc(0, Timer, 0); // Запуск та реєстрація обробки таймера
-	glFlush();// виклику для малювання вікна
+	glFlush();// виклик для малювання вікна
 	glutMainLoop(); // Вхід у цикл обробки подій GLUT
 	return 0;
 }
