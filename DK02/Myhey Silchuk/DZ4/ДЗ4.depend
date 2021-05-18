@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1621297515 source:c:\users\alena\desktop\Михей Информатика\ДЗ4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"List.h"
+
+1621297741 source:c:\users\alena\desktop\Михей Информатика\ДЗ4\list.c
+	"List.h"
+	<stdio.h>
+
+1621297880 c:\users\alena\desktop\Михей Информатика\ДЗ4\list.h
+	<stdio.h>
+
