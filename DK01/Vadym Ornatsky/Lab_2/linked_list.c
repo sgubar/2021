@@ -24,7 +24,7 @@ T_ListNode* InitNode(void* data_, unsigned int dataLength_) {
 }
 
 T_ListNode* InsertBefore(T_ListNode* node_, void* data_, unsigned int dataLength_) {
-    if ((NULL == node_) || (NULL == data_) || (1>dataLength_)) {
+    if ((NULL == node_) || (NULL == data_) || (1 > dataLength_)) {
         return NULL;
     }
     T_ListNode* newNode = InitNode(data_, dataLength_);
@@ -34,6 +34,9 @@ T_ListNode* InsertBefore(T_ListNode* node_, void* data_, unsigned int dataLength
     newNode->previous = node_->previous;
     newNode->next = node_;
     node_->previous = newNode;
+    if (NULL != newNode->previous) {
+        newNode->previous->next = newNode;
+    }
     return newNode;
 }
 
