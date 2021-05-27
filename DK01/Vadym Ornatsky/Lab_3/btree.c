@@ -80,6 +80,7 @@ void DestroyTree(T_Tree* tree_) {
         return;
     }
     DestroyNode(tree_->root);
+    free(tree_);
     return;
 }
 
@@ -195,8 +196,9 @@ void DeleteNode(T_Tree* tree_, char value_) {
 			parent->left = traversalNode->left;
 		}
 		else {
-			parent->right = traversalNode->right;
+			parent->right = traversalNode->left;
 		}
+        traversalNode->left = NULL;
 		DestroyNode(traversalNode);
 	}
 	else if (NULL == traversalNode->left) {
@@ -207,8 +209,9 @@ void DeleteNode(T_Tree* tree_, char value_) {
 			parent->right = traversalNode->right;
 		}
 		else {
-			parent->left = traversalNode->left;
+			parent->left = traversalNode->right;
 		}
+        traversalNode->right = NULL;
 		DestroyNode(traversalNode);
 	}
 	else {
