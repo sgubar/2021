@@ -8,7 +8,7 @@ typedef struct ListNode {
 
 
 T_ListNode* InitNode(double value_);
-T_ListNode* CreateList(double value_); // Create list with one element with value_
+T_ListNode* CreateList(double value_); 
 T_ListNode* AddToList(T_ListNode* list_, double value_);
 T_ListNode* RemoveFromListByIndex(T_ListNode* list_, unsigned int index_);
 T_ListNode* InsertByIndex(T_ListNode* list_, unsigned int index_, double value_);
