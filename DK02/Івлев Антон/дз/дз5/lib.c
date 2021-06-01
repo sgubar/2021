@@ -29,18 +29,20 @@ void push(t_list **list, int set_i){
                 tmp->right=new_element;
 }
 
-void treeprint(tnode *tree) {
-  if (tree!=NULL) { 
-    printf("%i \n",tree->field); 
-    treeprint(tree->left); 
-    treeprint(tree->right); 
+void treeprint(t_list **list) {
+    t_list *tmp = *list;
+  if (tmp!=NULL) { 
+    printf("%i \n",tmp->i); 
+    treeprint(&tmp->left); 
+    treeprint(&tmp->right); 
   }
 }
 
-void freedel(tnode *tree) {
-  if(tree!=NULL) {
-    freedel(tree->left);
-    freedel(tree->right);
-    free(tree);
+void freemem(t_list **list) {
+    t_list *tmp = *list;
+  if(tmp!=NULL) {
+    freemem(&tmp->left);
+    freemem(&tmp->right);
+    free(tmp);
   }
 }
