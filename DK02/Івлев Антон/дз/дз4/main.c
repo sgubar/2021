@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "lib.h"
 
 typedef struct s_list {
     int i;
