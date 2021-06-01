@@ -32,7 +32,7 @@ char isTrapezoid(const struct Point a, const struct Point b, const struct Point 
 {
 	const double s1 = cross(difference(a, b), difference(c, d));
 	const double s2 = cross(difference(b, c), difference(a, d));
-	// сравнение лучше производить с некоторой погрешностью
+	
 	return (!s1 || !s2);
 }
 
