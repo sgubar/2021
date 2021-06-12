@@ -1,0 +1,183 @@
+#include <windows.h>
+#include <stdio.h>
+//#pragma comment(lib,"gdi32.dll")
+
+class TFigure
+{
+public:TFigure(int numPoints, const char* s = "") :
+    name(s), ptsAmount(numPoints)
+{
+
+    pts = new TPoint[ptsAmount];
+
+    for (int i = 0; i < ptsAmount; i++) {
+
+        TPoint p((rand() % 100) + 20, (rand() % 100) + 20);
+        pts[i] = p;
+    }
+}
+
+
+      virtual ~TFigure()
+      {
+          delete[] pts;
+      }
+
+      void Draw(HDC hMyDC)
+      {
+          MoveToEx(hMyDC, pts[0].x, pts[0].y, (LPPOINT)NULL);
+          for (int i = 1; i < ptsAmount; i++)
+          {
+              LineTo(hMyDC, pts[i].x, pts[i].y);
+          }
+          LineTo(hMyDC, pts[0].x, pts[0].y);
+      }
+
+      void move_it(int step_x, int step_y) {
+          for (int i = 0; i < ptsAmount; i++)
+          {
+              pts[i].x += step_x;
+              pts[i].y += step_y;
+          }
+      }
+
+      struct TPoint
+      {
+          TPoint(int px = 0, int py = 0) : x(px), y(py)
+          {
+          }
+          int x, y;
+      };
+
+      double getS() const
+      {
+          double s = 0;
+          for (int i = 0; i < ptsAmount; i++) {
+              int j = (i == (ptsAmount - 1)) ? 0 : (i + 1);
+
+              s += (pts[i].x - pts[j].x) * (pts[i].y + pts[j].y);
+          }
+          return (0.5 * s);
+      }
+
+private:
+    const char* name;
+
+protected:
+    int ptsAmount;
+    TPoint* pts;
+};
+
+class TTriangle : public TFigure
+{
+public:
+    TTriangle(int numPoints = 3) : TFigure(numPoints, "triangle") {
+    }
+};
+
+#define BTN_CREATE_FIGURE 110
+
+HWND hButton;
+
+LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
+char szClassName[] = "FiguresWindowsApp";
+
+int WINAPI WinMain(HINSTANCE hThisInstance,
+    HINSTANCE hPrevInstance,
+    LPSTR lpszArgument,
+    int nCmdShow)
+{
+    HWND hwnd;
+    MSG messages;
+    WNDCLASSEX wincl;
+
+    wincl.hInstance = hThisInstance;
+    wincl.lpszClassName = szClassName;
+    wincl.lpfnWndProc = WindowProcedure;
+    wincl.style = CS_DBLCLKS;
+    wincl.cbSize = sizeof(WNDCLASSEX);
+
+    wincl.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    wincl.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+    wincl.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wincl.lpszMenuName = NULL;
+    wincl.cbClsExtra = 0;
+    wincl.cbWndExtra = 0;
+    wincl.hbrBackground = (HBRUSH)COLOR_BACKGROUND;
+
+    if (!RegisterClassEx(&wincl))
+        return 0;
+
+    hwnd = CreateWindowEx(
+        0,
+        szClassName,
+        "Figures Windows App",
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        544,
+        375,
+        HWND_DESKTOP,
+        NULL,
+        hThisInstance,
+        NULL
+    );
+
+    hButton = CreateWindowEx(0, "BUTTON", "Add Figure", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+        10, 10, 150, 21, hwnd, (HMENU)BTN_CREATE_FIGURE, hThisInstance, 0);
+
+    HWND hMyFont = (HWND)CreateFont(-11, 0, 0, 0, FW_NORMAL, 0, 0, 0, DEFAULT_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+        DEFAULT_PITCH | FF_DONTCARE, "Tahoma");
+    if (hMyFont) {
+        SendMessage(hButton, WM_SETFONT, WPARAM(hMyFont), 0);
+    }
+
+    ShowWindow(hwnd, nCmdShow);
+    while (GetMessage(&messages, NULL, 0, 0))
+    {
+        TranslateMessage(&messages);
+        DispatchMessage(&messages);
+    }
+    return messages.wParam;
+}
+
+
+LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+    case WM_COMMAND:
+        switch (LOWORD(wParam))
+        {
+        case BTN_CREATE_FIGURE:
+
+            HDC myDC = GetDC(hwnd);
+
+            TFigure f(8);
+            f.Draw(myDC);
+
+
+            TTriangle t(3);
+            t.Draw(myDC);
+
+
+            char s[128] = { 0 };
+            sprintf(s, "S of triangle = %7.3f", t.getS());
+            MessageBox(hwnd, s, "Info", MB_ICONASTERISK | MB_OK);
+
+
+            ReleaseDC(hwnd, myDC);
+            break;
+        }
+        break;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    default:
+        return DefWindowProc(hwnd, message, wParam, lParam);
+    }
+
+    return 0;
+}
