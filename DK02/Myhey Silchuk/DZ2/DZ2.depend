@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1623746658 source:c:\users\adadmin\desktop\laba 3\laba 3\dz2\figure.c
+	"Figure.h"
+	<stdio.h>
+	<math.h>
+
+1623746641 c:\users\adadmin\desktop\laba 3\laba 3\dz2\figure.h
+	<stdio.h>
+	<math.h>
+
+1623745978 source:c:\users\adadmin\desktop\laba 3\laba 3\dz2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"Figure.h"
+
