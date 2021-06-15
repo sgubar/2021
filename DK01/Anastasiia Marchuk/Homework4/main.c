@@ -7,22 +7,22 @@ int main(int argc, const char * argv[]) {
 
 	printDoubleList(l);
 
-  addIntValueToDoubleList(l, 'A');
+  addDoubleValueToDoubleList(l, 'A');
 	printDoubleList(l);
 
-	addIntValueToDoubleList(l, 'B');
+	addDoubleValueToDoubleList(l, 'B');
 	printDoubleList(l);
 
-  addIntValueToDoubleList(l, 'C');
+  addDoubleValueToDoubleList(l, 'C');
 	printDoubleList(l);
 
-  addIntValueToDoubleList(l, 'D');
+  addDoubleValueToDoubleList(l, 'D');
 	printDoubleList(l);
 
-  addIntValueToDoubleList(l, 'F');
+  addDoubleValueToDoubleList(l, 'F');
 	printDoubleList(l);
 
-  removeFirstElementFromDoubleList(l);
+  removeLastElementFromDoubleList(l);
 	printDoubleList(l);
 
 	removeLastElementFromDoubleList(l);
