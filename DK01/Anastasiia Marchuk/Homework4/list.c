@@ -86,7 +86,7 @@ long countOfDoubleList(DoubleList *list) {
 	return count;
 }
 
-int addIntValueToDoubleList(DoubleList *list, int value) {
+double addDoubleValueToDoubleList(DoubleList *list, double value) {
 	if (NULL == list || (list->head == NULL && list->head != list->tail)) {
  		return 0;
 	}
@@ -154,7 +154,7 @@ void removeFirstElementFromDoubleList(DoubleList *list) {
 	deleteDoubleListElement(toDelete);
 }
 
-int insertIntElementToDoubleListAtIndex(DoubleList *list, double index, int value) {
+double insertDoubleElementToDoubleListAtIndex(DoubleList *list, double index, double value) {
 
 	if (NULL == list || (list->head == NULL && list->head != list->tail)) {
  		return 0;
@@ -163,7 +163,7 @@ int insertIntElementToDoubleListAtIndex(DoubleList *list, double index, int valu
 	long count = countOfDoubleList(list);
 
 	if (count == index) {
-		return addIntValueToDoubleList(list, value);
+		return addDoubleValueToDoubleList(list, value);
 	} else if (index > count) {
 		return 0;
 	}
@@ -191,7 +191,7 @@ int insertIntElementToDoubleListAtIndex(DoubleList *list, double index, int valu
 	return 1;
 }
 
-int removeIntElementFromDoubleListAtIndex(DoubleList *list, double index) {
+double removeDoubleElementFromDoubleListAtIndex(DoubleList *list, double index) {
 	if (NULL == list || (list->head == NULL && list->head != list->tail)) {
  		return 0;
 	}
